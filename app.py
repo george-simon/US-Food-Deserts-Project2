@@ -1,9 +1,21 @@
 # Step 1: Import Flask
-from flask import Flask, render_template
+from flask import Flask, render_template, jsonify
 
 # Step 2: Create an app
 app = Flask(__name__)
 
+mult_vul_data = [{
+    OBJECTID: 1,
+    STATE: 41,
+    COUNTY: 051,
+    TRACT: 003100
+},
+{
+    OBJECTID: 2,
+    STATE: 41,
+    COUNTY: 051,
+    TRACT: 004602
+}]
 
 # Create engine
 # Does it work to point the create_engine function at a .csv?
@@ -30,7 +42,7 @@ def multdata():
     # session = Session(engine)
 
     # Switched render_template to root route
-    return "multdata page"
+    return jsonify(mult_vul_data)
 
 # Boiler plate flask app code
 if __name__ == "__main__":
