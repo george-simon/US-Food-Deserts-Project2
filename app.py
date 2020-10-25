@@ -1,5 +1,5 @@
 # Step 1: Import Flask
-from flask import Flask
+from flask import Flask, render_template
 
 # Step 2: Create an app
 app = Flask(__name__)
@@ -13,7 +13,8 @@ app = Flask(__name__)
 @app.route("/")
 def home():
 
-    return "App is running."
+    # Added render_template to root route
+    return render_template('basic.html')
 
 # This page would be a link on the home page that would take the user to the
 # page displaying a heat map with state food desert data.
@@ -28,8 +29,8 @@ def multdata():
     # but I don't know how to point that create_engine function to our .csv's...
     # session = Session(engine)
 
-    # Is this all that's needed?
-    return render_template('basic.html')
+    # Switched render_template to root route
+    return "multdata page"
 
 # Boiler plate flask app code
 if __name__ == "__main__":
