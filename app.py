@@ -7,7 +7,7 @@ app = Flask(__name__)
 
 # Create engine
 # Does it work to point the create_engine function at a .csv?
-engine = create_engine("static/data/data_food_deserts_lookup.csv")
+# engine = create_engine("static/data/data_food_deserts_lookup.csv")
 
 # Step 3: Index route. This would be connected to the home page, I believe.
 @app.route("/")
@@ -26,7 +26,10 @@ def statedata():
 def multdata():
     # I know that for an API, a session needs to be created that is using the "engine",
     # but I don't know how to point that create_engine function to our .csv's...
-    session = Session(engine)
+    # session = Session(engine)
+
+    # Is this all that's needed?
+    return render_template('basic.html')
 
 # Boiler plate flask app code
 if __name__ == "__main__":
