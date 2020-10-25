@@ -5,16 +5,16 @@ from flask import Flask, render_template, jsonify
 app = Flask(__name__)
 
 mult_vul_data = [{
-    OBJECTID: 1,
-    STATE: 41,
-    COUNTY: 051,
-    TRACT: 003100
+    "OBJECTID": 1,
+    "STATE": 41,
+    "COUNTY": "051",
+    "TRACT": "003100"
 },
 {
-    OBJECTID: 2,
-    STATE: 41,
-    COUNTY: 051,
-    TRACT: 004602
+    "OBJECTID": 2,
+    "STATE": 41,
+    "COUNTY": "051",
+    "TRACT": "004602"
 }]
 
 # Create engine
