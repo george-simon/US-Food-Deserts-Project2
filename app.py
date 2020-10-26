@@ -1,8 +1,11 @@
 # Step 1: Import Flask
 from flask import Flask, render_template, jsonify
+from flask_cors import CORS
 
 # Step 2: Create an app
 app = Flask(__name__)
+
+CORS(app)
 
 mult_vul_data = [{
     "OBJECTID": 1,
