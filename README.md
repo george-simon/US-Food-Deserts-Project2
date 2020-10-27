@@ -17,8 +17,8 @@ After giving the visitor a brief overview of food deserts, we will guide them to
   * Save to Master Branch
 * Data Cleaning (ETL) - JOHN, PAUL
   * Extract
-  * Transform 
-  * Load (database)
+  * Transform
+  * Load (PostGreSQL)
 * Preliminary Analysis - GEORGE, BROCK
 * Website
   * Python Flask API - BROCK
