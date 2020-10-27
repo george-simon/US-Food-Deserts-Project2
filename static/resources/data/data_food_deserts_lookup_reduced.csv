@@ -1,0 +1,13 @@
+﻿Field,LongName,Description
+CensusTract,Census tract,Census tract number
+State,State,State name
+County,County,County name
+Urban,Urban tract,Flag for urban tract
+POP2010,"Population, tract total",Population count from 2010 census
+LowIncomeTracts,Low income tract,Flag for low income tract
+PovertyRate,Tract poverty rate,Share of the tract population living with income at or below the Federal poverty thresholds for family size
+MedianFamilyIncome,Tract median family income,Tract median family income
+LA1and10,Low access tract at 1 mile for urban areas and 10 miles for rural areas,Flag for low access tract at 1 mile for urban areas or 10 miles for rural areas
+lapophalf,"Low access, population at 1/2 mile, number",Population count beyond 1/2 mile from supermarket
+lapop1,"Low access, population at 1 mile, number",Population count beyond 1 mile from supermarket
+TractHUNV,"Tract housing units without a vehicle, number",Total count of housing units without a vehicle in tract 
