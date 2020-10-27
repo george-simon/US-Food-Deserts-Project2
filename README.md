@@ -20,6 +20,9 @@ After giving the visitor a brief overview of food deserts, we will guide them to
   * Transform
   * Load (PostGreSQL)
 * Preliminary Analysis - GEORGE, BROCK
+  * Demographic Data in Multnomah
+  * Summary Tables at Multnomah
+  * Build Confidence on what we are looking at
 * Website
   * Python Flask API - BROCK
     * Flask CORS Module
@@ -30,5 +33,5 @@ After giving the visitor a brief overview of food deserts, we will guide them to
   * D3.js visualization ?? 
 * Final Analysis/Write Up - TEAM
 * Presentation - Team
-* Github Merge Manager - GEORGE
+* Github Merge Manager - PAUL
   * Environment Set-Up
