@@ -1,19 +1,34 @@
--- Vulnerability data joined on census tract
+-- Create Multomah Co. food desert table using SELECT statement
 DROP TABLE IF EXISTS multnomah_data; 
 CREATE TABLE multnomah_data AS
 (SELECT 
-pop2010 AS population_2010
+CensusTract AS census_tract,
+POP2010 AS population_2010
 ,TractLOWI AS population_low_income
-,povertyrate AS percent_poverty
-,medianfamilyincome AS med_fam_income
-,tractHUNV AS house_unit_no_vehicle
+,PovertyRate AS percent_poverty
+,MedianFamilyIncome AS med_fam_income
+,TractHUNV AS house_unit_no_vehicle
 ,ROUND(lapophalf) AS population_low_access_half
 ,ROUND(lapop1) AS population_low_access_1
 FROM data_food_deserts
 INNER JOIN data_vulnerability_multi
-ON data_food_deserts.censustract = data_vulnerability_multi.fips
-WHERE pop2010 > 100)
---  OBJECTID      
+ON data_food_deserts.CensusTract = data_vulnerability_multi.fips
+WHERE POP2010 > 100)
+
+-- Create National food desert table using SELECT statement
+DROP TABLE IF EXISTS national_data; 
+CREATE TABLE national_data AS
+(SELECT  
+State          
+,County      
+,SUM(POP2010) AS total_population  
+,CAST((ROUND(AVG(CAST(Urban AS NUMERIC)), 2) * 100) AS INT) AS percent_urban
+,CAST((ROUND(AVG(CAST(LA1and10 AS NUMERIC)), 2) * 100) AS INT) AS percent_low_access  
+FROM data_food_deserts
+group by State, County)
+
+-- Other columns not currently in use from data_vulnerability_mult.sql schema:
+-- ,OBJECTID      
 -- ,STATE         
 -- ,COUNTY        
 -- ,TRACT         
@@ -33,18 +48,7 @@ WHERE pop2010 > 100)
 -- ,Shape_Area    
 -- ,is_vulnerable 
 
--- Food Desert data grouped by state and county
-DROP TABLE IF EXISTS national_data; 
-CREATE TABLE national_data AS
-(SELECT  
-state          
-,county      
-,SUM(POP2010) AS total_population  
-,CAST((ROUND(AVG(CAST(urban AS NUMERIC)), 2) * 100) AS INT) AS percent_urban
-,CAST((ROUND(AVG(CAST(LA1and10 AS NUMERIC)), 2) * 100) AS INT) AS percent_low_access  
-FROM data_food_deserts
-group by state, county)
---  CensusTract   
+-- Other columns not currently in use from data_food_deserts.sql schema: 
 -- ,OHU2010        
 -- ,GroupQuartersFl
 -- ,NUMGQTRS       
