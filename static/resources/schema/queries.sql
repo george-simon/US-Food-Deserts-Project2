@@ -13,7 +13,10 @@ POP2010 AS population_2010
 FROM data_food_deserts
 INNER JOIN data_vulnerability_multi
 ON data_food_deserts.CensusTract = data_vulnerability_multi.fips
-WHERE POP2010 > 100)
+WHERE POP2010 > 100);
+ALTER TABLE multnomah_data
+ADD PRIMARY KEY (census_tract);
+
 
 -- Create National food desert table using SELECT statement
 DROP TABLE IF EXISTS national_data; 
@@ -25,7 +28,9 @@ State
 ,CAST((ROUND(AVG(CAST(Urban AS NUMERIC)), 2) * 100) AS INT) AS percent_urban
 ,CAST((ROUND(AVG(CAST(LA1and10 AS NUMERIC)), 2) * 100) AS INT) AS percent_low_access  
 FROM data_food_deserts
-group by State, County)
+GROUP BY State, County);
+ALTER TABLE national_data
+ADD PRIMARY KEY (State, County);
 
 -- Other columns not currently in use from data_vulnerability_mult.sql schema:
 -- ,OBJECTID      
