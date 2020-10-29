@@ -26,12 +26,15 @@ After giving the visitor a brief overview of food deserts, we will guide them to
 * Website
   * Python Flask API - BROCK
     * Flask CORS Module
-  * HTML/CSS
-  * Database (SQL, MongoDB, etc.) 
+    * Call data element
+  * HTML/CSS - GEORGE
+  * Database
 * Visualizations - GEORGE
   * Multiple leaflet, plotly graphs
   * D3.js visualization ?? 
 * Final Analysis/Write Up - TEAM
 * Presentation - Team
+  * Use website as presentation
+  * Be prepared to show code in ppt
 * Github Merge Manager - PAUL
-  * Environment Set-Up
+  * Environment Set-Up - PAUL
