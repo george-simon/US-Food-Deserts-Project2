@@ -1,20 +1,8 @@
-Highcharts.getJSON(
-    'https://cdn.jsdelivr.net/gh/highcharts/highcharts@c116b6fa6948448/samples/data/us-counties-unemployment.json',
-    function (data) {
+// d3.json('<data_source>').then(function(result) {
+d3.csv("../resources/data/data_food_deserts.csv", function(results) {
+    console.log(results);
   
-      /**
-       * Data parsed from http://www.bls.gov/lau/#tables
-       *
-       * 1. Go to http://www.bls.gov/lau/laucntycur14.txt (or similar, updated
-       *  datasets)
-       * 2. In the Chrome Developer tools console, run this code:
-       *  copy(JSON.stringify(document.body.innerHTML.split('\n').filter(function (s) { return s.indexOf('<PUT DATE HERE IN FORMAT e.g. Feb-14>') !== -1; }).map(function (row) { row = row.split('|'); return { code: 'us-' + row[3].trim().slice(-2).toLowerCase() + '-' + row[2].trim(), name: row[3].trim(), value: parseFloat(row[8]) }; })))
-       * 3. The data is now on your clipboard, paste it below
-       * 4. Verify that the length of the data is reasonable, about 3300
-       *  counties.
-       */
-  
-      var countiesMap = Highcharts.geojson(
+      var data = Highcharts.geojson(
           Highcharts.maps['countries/us/us-all-all']
         ),
         // Extract the line paths from the GeoJSON
@@ -31,7 +19,7 @@ Highcharts.getJSON(
         });
   
       // Add state acronym for tooltip
-      Highcharts.each(countiesMap, function (mapPoint) {
+      Highcharts.each(data, function (mapPoint) {
         mapPoint.name = mapPoint.name + ', ' +
           mapPoint.properties['hc-key'].substr(3, 2);
       });
@@ -83,7 +71,7 @@ Highcharts.getJSON(
           },
   
           series: [{
-            mapData: countiesMap,
+            mapData: data,
             data: data,
             joinBy: ['hc-key', 'code'],
             name: 'Unemployment rate',
