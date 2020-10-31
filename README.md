@@ -10,3 +10,31 @@ After giving the visitor a brief overview of food deserts, we will guide them to
 * What does a food desert look like in an urban setting?
 * Are there income differences between food desert and non-food desert areas?
 * Are there health outcome differences?
+
+### PROJECT TASK BUILD OUT
+* Data Sourcing/Research - TEAM
+  * Identify files
+  * Save to Master Branch
+* Data Cleaning (ETL) - JOHN, PAUL
+  * Extract
+  * Transform
+  * Load (PostGreSQL)
+* Preliminary Analysis - GEORGE, BROCK
+  * Demographic Data in Multnomah
+  * Summary Tables at Multnomah
+  * Build Confidence on what we are looking at
+* Website
+  * Python Flask API - BROCK
+    * Flask CORS Module
+    * Call data element
+  * HTML/CSS - GEORGE
+  * Database
+* Visualizations - GEORGE
+  * Multiple leaflet, plotly graphs
+  * D3.js visualization ?? 
+* Final Analysis/Write Up - TEAM
+* Presentation - Team
+  * Use website as presentation
+  * Be prepared to show code in ppt
+* Github Merge Manager - PAUL
+  * Environment Set-Up - PAUL
