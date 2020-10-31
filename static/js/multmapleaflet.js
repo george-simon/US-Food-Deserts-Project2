@@ -15,7 +15,7 @@ L.tileLayer("https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
 }).addTo(myMap);
 
 // Grab data with d3
-let mult_geoJson = "../static/resources/data/outline_mult.geojson";
+let mult_geoJson = "../static/js/outline_mult.geojson";
 
 d3.json("/api/v1.0/multdata").then(data => {
 
