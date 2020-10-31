@@ -40,7 +40,7 @@ def home():
     # )
 
     # Added render_template to root route
-    return render_template('basic.html')
+    return render_template('index.html')
 
 @app.route("/api/v1.0/natdata")
 def natdata():  
