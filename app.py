@@ -70,7 +70,7 @@ def multdata():
 
     session = Session(engine)
 
-    results = session.query(multnomah.census_tract, multnomah.population_2010, multnomah.population_low_income, multnomah.med_fam_income, multnomah.house_unit_no_vehicle).all()
+    results = session.query(multnomah.census_tract, multnomah.population_2010, multnomah.population_low_income, multnomah.med_fam_income, multnomah.house_unit_no_vehicle, multnomah.population_low_access_half, multnomah.population_low_access_1, multnomah.percent_poverty).all()
     # Was not able to load multnomah.percent_poverty it contains a decimal. Need to be integers.
     # , multnomah.population_low_access_half, multnomah.population_low_access_1
 
@@ -85,9 +85,9 @@ def multdata():
         item_dict["population_low_income"] = item[2]
         item_dict["med_fam_income"] = item[3]
         item_dict["house_unit_no_vehicle"] = item[4]
-        # item_dict["population_low_access_half"] = item[5]
-        # item_dict["population_low_access_1"] = item[6]
-        # item_dict["percent_poverty"] = item[3]
+        item_dict["population_low_access_half"] = item[5]
+        item_dict["population_low_access_1"] = item[6]
+        item_dict["percent_poverty"] = item[7]
         mult_results.append(item_dict)
 
     return jsonify(mult_results)

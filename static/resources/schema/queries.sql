@@ -5,11 +5,11 @@ CREATE TABLE multnomah_data AS
 CensusTract AS census_tract,
 POP2010 AS population_2010
 ,TractLOWI AS population_low_income
-,PovertyRate AS percent_poverty
+,CAST(ROUND(PovertyRate) AS INT) AS percent_poverty
 ,MedianFamilyIncome AS med_fam_income
 ,TractHUNV AS house_unit_no_vehicle
-,ROUND(lapophalf) AS population_low_access_half
-,ROUND(lapop1) AS population_low_access_1
+,CAST(ROUND(lapophalf) AS INT) AS population_low_access_half
+,CAST(ROUND(lapop1) AS INT) AS population_low_access_1
 FROM data_food_deserts
 INNER JOIN data_vulnerability_multi
 ON data_food_deserts.CensusTract = data_vulnerability_multi.fips
