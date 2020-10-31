@@ -25,7 +25,7 @@ print(Base.classes.keys())
 
 
 # Save references to the tables in the food_deserts database
-national = Base.classes.data_food_deserts
+national = Base.classes.national_data
 # I'm pulling the data_food_deserts table because the national_data table does not have a primary key yet
 multnomah = Base.classes.multnomah_data
 
@@ -34,20 +34,20 @@ multnomah = Base.classes.multnomah_data
 def home():
 
     # In the root level route, link to API call routes
-    return (
-        f"<a href='/api/v1.0/natdata'>National Data</a><br/>"
-        f"<a href='/api/v1.0/multdata'>Multnomah County, Oregon Data</a><br/>"
-    )
+    # return (
+    #     f"<a href='/api/v1.0/natdata'>National Data</a><br/>"
+    #     f"<a href='/api/v1.0/multdata'>Multnomah County, Oregon Data</a><br/>"
+    # )
 
     # Added render_template to root route
-    # return render_template('basic.html')
+    return render_template('basic.html')
 
 @app.route("/api/v1.0/natdata")
 def natdata():  
     
     session = Session(engine)
 
-    results = session.query(national.censustract, national.state, national.county, national.pop2010).all()
+    results = session.query(national.state, national.county, national.total_population, national.percent_urban, national.percent_low_access).all()
     # , national.percent_urban, national.percent_low_access -- need to be integers
 
     session.close()
@@ -56,12 +56,11 @@ def natdata():
 
     for item in results:
         item_dict = {}
-        item_dict["censustract"] = item[0]
-        item_dict["state"] = item[1]
-        item_dict["county"] = item[2]
-        item_dict["total_population"] = item[3]
-        # item_dict["percent_urban"] = item[4]
-        # item_dict["percent_low_access"] = item[5]
+        item_dict["state"] = item[0]
+        item_dict["county"] = item[1]
+        item_dict["total_population"] = item[2]
+        item_dict["percent_urban"] = item[3]
+        item_dict["percent_low_access"] = item[4]
         nat_results.append(item_dict)
 
     return jsonify(nat_results)
