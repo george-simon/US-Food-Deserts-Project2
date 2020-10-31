@@ -2,8 +2,8 @@
 DROP TABLE IF EXISTS multnomah_data; 
 CREATE TABLE multnomah_data AS
 (SELECT 
-CensusTract AS census_tract,
-POP2010 AS population_2010
+CensusTract AS census_tract
+,POP2010 AS population_2010
 ,TractLOWI AS population_low_income
 ,PovertyRate AS percent_poverty
 ,MedianFamilyIncome AS med_fam_income
