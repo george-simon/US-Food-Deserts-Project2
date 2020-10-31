@@ -2,9 +2,6 @@
 // d3.csv("../resources/data/data_food_deserts.csv", function(results) {
 //     console.log(results);
 
-// Highcharts.getJSON(
-//   'https://cdn.jsdelivr.net/gh/highcharts/highcharts@c116b6fa6948448/samples/data/us-counties-unemployment.json',
-//   function (data) {
 
 //     /**
 //      * Data parsed from http://www.bls.gov/lau/#tables
