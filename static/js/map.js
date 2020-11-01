@@ -17,7 +17,9 @@
       
 // d3.csv("", function(data) {
     // console.log(data);
-var data = [{"code":"us-al-001","name":"Autauga County, AL","value":3.9},{"code":"us-al-003","name":"Baldwin County, AL","value":4.3},{"code":"us-al-005","name":"Barbour County, AL","value":5.6},{"code":"us-al-007","name":"Bibb County, AL","value":4.2},{"code":"us-al-009","name":"Blount County, AL","value":3.8},{"code":"us-al-011","name":"Bullock County, AL","value":5.5},{"code":"us-al-013","name":"Butler County, AL","value":5.6}]
+// var data = [{"code":"us-al-001","name":"Autauga County, AL","value":3.9},{"code":"us-al-003","name":"Baldwin County, AL","value":4.3},{"code":"us-al-005","name":"Barbour County, AL","value":5.6},{"code":"us-al-007","name":"Bibb County, AL","value":4.2},{"code":"us-al-009","name":"Blount County, AL","value":3.8},{"code":"us-al-011","name":"Bullock County, AL","value":5.5},{"code":"us-al-013","name":"Butler County, AL","value":5.6}]
+d3.json("/api/v1.0/natdata").then(data => {
+  console.log(data);
 
   var countiesMap = Highcharts.geojson(
     Highcharts.maps['countries/us/us-all-all']
@@ -120,3 +122,4 @@ var data = [{"code":"us-al-001","name":"Autauga County, AL","value":3.9},{"code"
   });
   }, 0);
   
+)}
