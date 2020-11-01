@@ -32,6 +32,28 @@ GROUP BY State, County);
 ALTER TABLE national_data
 ADD PRIMARY KEY (State, County);
 
+
+DROP TABLE IF EXISTS multnomah_summary_data; 
+CREATE TABLE multnomah_summary_data AS
+(SELECT 
+ data_food_deserts.county
+,sum(POP2010) AS sum_population_2010
+,sum(TractLOWI) AS sum_population_low_income
+,CAST(AVG(PovertyRate) AS INTEGER) AS median_percent_poverty
+,CAST(AVG(medianfamilyincome) AS INTEGER) AS median_family_income
+,SUM(TractHUNV) AS sum_house_unit_no_vehicle
+,SUM(CAST(ROUND(lapophalf) AS INT)) AS sum_population_low_access_half
+,SUM(CAST(ROUND(lapop1) AS INT)) AS sum_population_low_access_1
+FROM data_food_deserts
+INNER JOIN data_vulnerability_multi
+ON data_food_deserts.CensusTract = data_vulnerability_multi.fips
+WHERE POP2010 > 100
+group by data_food_deserts.county);
+
+ALTER TABLE multnomah_summary_data
+ADD PRIMARY KEY (county);
+
+
 -- Other columns not currently in use from data_vulnerability_mult.sql schema:
 -- ,OBJECTID      
 -- ,STATE         
