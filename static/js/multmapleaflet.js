@@ -19,7 +19,7 @@ let mult_geoJson = "../static/js/outline_mult.geojson";
 
 d3.json("/api/v1.0/multdata").then(data => {
 
-  console.log(data)
+  // console.log(data)
 
   d3.json(mult_geoJson).then(data => {
 
@@ -65,4 +65,4 @@ d3.json("/api/v1.0/multdata").then(data => {
     }).addTo(myMap)
   });
 
-});    
+});
