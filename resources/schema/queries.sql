@@ -32,6 +32,7 @@ GROUP BY State, County);
 ALTER TABLE national_data
 ADD PRIMARY KEY (State, County);
 
+
 DROP TABLE IF EXISTS multnomah_summary_data; 
 CREATE TABLE multnomah_summary_data AS
 (SELECT 
@@ -51,6 +52,7 @@ group by data_food_deserts.county);
 
 ALTER TABLE multnomah_summary_data
 ADD PRIMARY KEY (county);
+
 
 -- Other columns not currently in use from data_vulnerability_mult.sql schema:
 -- ,OBJECTID      
