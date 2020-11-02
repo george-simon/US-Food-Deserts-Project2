@@ -1,5 +1,5 @@
-config.js
+# config files
 config.py
+config.js
 
-# Was included in the startbootstrap template
 node_modules
