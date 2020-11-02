@@ -377,6 +377,9 @@ SELECT *
 FROM nat_map_json
 WHERE value IS NOT NULL
 );
+ALTER TABLE clean_nat_map_json
+ADD PRIMARY KEY (code);
+;
 
 -- Other columns not currently in use from data_vulnerability_mult.sql schema:
 -- ,OBJECTID      
