@@ -9,11 +9,12 @@ CensusTract AS census_tract
 ,MedianFamilyIncome AS med_fam_income
 ,TractHUNV AS house_unit_no_vehicle
 ,CAST(ROUND(lapophalf) AS INT) AS population_low_access_half
+,CAST((ROUND((lapophalf / POP2010) * 100)) AS INT) AS percent_low_access_half
 ,CAST(ROUND(lapop1) AS INT) AS population_low_access_1
+,CAST((ROUND((lapop1 / POP2010) * 100)) AS INT) AS percent_low_access_1
 FROM data_food_deserts
 INNER JOIN data_vulnerability_multi
-ON data_food_deserts.CensusTract = data_vulnerability_multi.fips
-WHERE POP2010 > 100);
+ON data_food_deserts.CensusTract = data_vulnerability_multi.fips);
 ALTER TABLE multnomah_data
 ADD PRIMARY KEY (census_tract);
 

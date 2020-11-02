@@ -70,7 +70,10 @@ def multdata():
 
     session = Session(engine)
 
-    results = session.query(multnomah.census_tract, multnomah.population_2010, multnomah.population_low_income, multnomah.med_fam_income, multnomah.house_unit_no_vehicle, multnomah.population_low_access_half, multnomah.population_low_access_1, multnomah.percent_poverty).all()
+    results = session.query(multnomah.census_tract, multnomah.population_2010, multnomah.population_low_income, 
+                            multnomah.percent_poverty, multnomah.med_fam_income, multnomah.house_unit_no_vehicle, 
+                            multnomah.population_low_access_half, multnomah.percent_low_access_half,
+                            multnomah.population_low_access_1, multnomah.percent_low_access_1).all()
     # Was not able to load multnomah.percent_poverty it contains a decimal. Need to be integers.
     # , multnomah.population_low_access_half, multnomah.population_low_access_1
 
@@ -83,11 +86,13 @@ def multdata():
         item_dict["census_tract"] = item[0]
         item_dict["population_2010"] = item[1]
         item_dict["population_low_income"] = item[2]
-        item_dict["med_fam_income"] = item[3]
-        item_dict["house_unit_no_vehicle"] = item[4]
-        item_dict["population_low_access_half"] = item[5]
-        item_dict["population_low_access_1"] = item[6]
-        item_dict["percent_poverty"] = item[7]
+        item_dict["percent_poverty"] = item[3]
+        item_dict["med_fam_income"] = item[4]
+        item_dict["house_unit_no_vehicle"] = item[5]
+        item_dict["population_low_access_half"] = item[6]
+        item_dict["percent_low_access_half"] = item[7]
+        item_dict["population_low_access_1"] = item[8]
+        item_dict["percent_low_access_1"] = item[9]
         mult_results.append(item_dict)
 
     return jsonify(mult_results)
