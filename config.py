@@ -1,2 +1,2 @@
-PW = "sM23US7TMu"
+PW = "postgres"
 
