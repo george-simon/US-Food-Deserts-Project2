@@ -66,6 +66,231 @@ group by data_food_deserts.county
 ALTER TABLE multnomah_summary_data
 ADD PRIMARY KEY (county);
 
+-- State Food Desert Stats (For Data Table) --
+DROP TABLE nat_stat_table
+CREATE TABLE nat_stat_table AS
+(SELECT state AS State
+ 	  ,stateCode
+ 	  ,median_income
+	  ,SUM(pop2010) AS Total_2010_Pop
+	  ,SUM(is_lila_pop) AS Food_Desert_Pop
+	  ,SUM(not_lila_pop) AS Non_Food_Desert_Pop
+	  ,CAST(ROUND(SUM(CAST(is_lila_pop AS FLOAT)) / SUM(CAST(pop2010 AS FLOAT))*100) AS INT) AS Percent_Food_Desert
+	  ,CAST(ROUND(SUM(CAST(not_lila_pop AS FLOAT)) / SUM(CAST(pop2010 AS FLOAT))*100) AS INT) AS Percent_Non_Food_Desert
+	  ,CAST(ROUND(SUM(CAST(is_lila_white AS FLOAT)) / SUM(CAST(is_lila_pop AS FLOAT))*100) - ROUND(SUM(CAST(not_lila_white AS FLOAT)) / SUM(CAST(not_lila_pop AS FLOAT))*100) AS INT) AS White_More_Less_Likely_FD
+	  ,CAST(ROUND(SUM(CAST(is_lila_black AS FLOAT)) / SUM(CAST(is_lila_pop AS FLOAT))*100) - ROUND(SUM(CAST(not_lila_black AS FLOAT)) / SUM(CAST(not_lila_pop AS FLOAT))*100) AS INT) AS Black_More_Less_Likely_FD
+	  ,CAST(ROUND(SUM(CAST(is_lila_aian AS FLOAT)) / SUM(CAST(is_lila_pop AS FLOAT))*100) - ROUND(SUM(CAST(not_lila_aian AS FLOAT)) / SUM(CAST(not_lila_pop AS FLOAT))*100) AS INT) AS Amer_Ind_AK_Native_More_Less_Likely_FD
+	  ,CAST(ROUND(SUM(CAST(is_lila_asian AS FLOAT)) / SUM(CAST(is_lila_pop AS FLOAT))*100) - ROUND(SUM(CAST(not_lila_asian AS FLOAT)) / SUM(CAST(not_lila_pop AS FLOAT))*100) AS INT) AS Asian_More_Less_Likely_FD
+	  ,CAST(ROUND(SUM(CAST(is_lila_nhopi AS FLOAT)) / SUM(CAST(is_lila_pop AS FLOAT))*100) - ROUND(SUM(CAST(not_lila_nhopi AS FLOAT)) / SUM(CAST(not_lila_pop AS FLOAT))*100) AS INT) AS Native_HI_Pac_Is_More_Less_Likely_FD
+	  ,CAST(ROUND(SUM(CAST(is_lila_multir AS FLOAT)) / SUM(CAST(is_lila_pop AS FLOAT))*100) - ROUND(SUM(CAST(not_lila_multir AS FLOAT)) / SUM(CAST(not_lila_pop AS FLOAT))*100) AS INT) AS Multi_Race_More_Less_Likely_FD
+	  ,CAST(ROUND(SUM(CAST(is_lila_hispanic AS FLOAT)) / SUM(CAST(is_lila_pop AS FLOAT))*100) - ROUND(SUM(CAST(not_lila_hispanic AS FLOAT)) / SUM(CAST(not_lila_pop AS FLOAT))*100) AS INT) AS Hispanic_More_Less_Likely_FD
+	  ,CAST(ROUND(SUM(CAST(is_lila_white AS FLOAT)) / SUM(CAST(is_lila_pop AS FLOAT))*100) AS INT) AS White_Percent_Food_Desert
+	  ,CAST(ROUND(SUM(CAST(is_lila_black AS FLOAT)) / SUM(CAST(is_lila_pop AS FLOAT))*100) AS INT) AS Black_Percent_Food_Desert
+	  ,CAST(ROUND(SUM(CAST(is_lila_aian AS FLOAT)) / SUM(CAST(is_lila_pop AS FLOAT))*100) AS INT) AS Amer_Ind_AK_Native_Percent_Food_Desert
+	  ,CAST(ROUND(SUM(CAST(is_lila_asian AS FLOAT)) / SUM(CAST(is_lila_pop AS FLOAT))*100) AS INT) AS Asian_Percent_Food_Desert
+	  ,CAST(ROUND(SUM(CAST(is_lila_nhopi AS FLOAT)) / SUM(CAST(is_lila_pop AS FLOAT))*100) AS INT) AS Native_HI_Pac_Is_Percent_Food_Desert
+	  ,CAST(ROUND(SUM(CAST(is_lila_multir AS FLOAT)) / SUM(CAST(is_lila_pop AS FLOAT))*100) AS INT) AS Multi_Race_Percent_Food_Desert
+	  ,CAST(ROUND(SUM(CAST(is_lila_hispanic AS FLOAT)) / SUM(CAST(is_lila_pop AS FLOAT))*100) AS INT) AS Hispanic_Percent_Food_Desert
+	  ,CAST(ROUND(SUM(CAST(not_lila_white AS FLOAT)) / SUM(CAST(not_lila_pop AS FLOAT))*100) AS INT) AS White_Percent_Not_Food_Desert
+	  ,CAST(ROUND(SUM(CAST(not_lila_black AS FLOAT)) / SUM(CAST(not_lila_pop AS FLOAT))*100) AS INT) AS Black_Percent_Not_Food_Desert
+	  ,CAST(ROUND(SUM(CAST(not_lila_aian AS FLOAT)) / SUM(CAST(not_lila_pop AS FLOAT))*100) AS INT) AS Amer_Ind_AK_Native_Percent_Not_Food_Desert
+	  ,CAST(ROUND(SUM(CAST(not_lila_asian AS FLOAT)) / SUM(CAST(not_lila_pop AS FLOAT))*100) AS INT) AS Asian_Percent_Not_Food_Desert
+	  ,CAST(ROUND(SUM(CAST(not_lila_nhopi AS FLOAT)) / SUM(CAST(not_lila_pop AS FLOAT))*100) AS INT) AS Native_HI_Pac_Is_Percent_Not_Food_Desert
+	  ,CAST(ROUND(SUM(CAST(not_lila_multir AS FLOAT)) / SUM(CAST(not_lila_pop AS FLOAT))*100) AS INT) AS Multi_Race_Percent_Not_Food_Desert
+	  ,CAST(ROUND(SUM(CAST(not_lila_hispanic AS FLOAT)) / SUM(CAST(not_lila_pop AS FLOAT))*100) AS INT) AS Hispanic_Percent_Not_Food_Desert
+FROM 
+	(
+	SELECT *
+		  ,(is_lila_white + is_lila_black + is_lila_asian + is_lila_nhopi + is_lila_aian + is_lila_multir) AS is_lila_pop
+		  ,(not_lila_white + not_lila_black + not_lila_asian + not_lila_nhopi + not_lila_aian + not_lila_multir) AS not_lila_pop
+	FROM
+		(
+		SELECT state
+			  ,pop2010
+			  ,tractwhite
+			  ,tractblack
+			  ,tractasian
+			  ,tractnhopi
+			  ,tractaian
+			  ,tractomultir
+			  ,tracthispanic
+			  ,CASE
+				WHEN CAST(lilatracts_1and10 AS INT) = 1 THEN tractwhite
+				ELSE NULL
+			   END is_lila_white
+			  ,CASE
+				WHEN CAST(lilatracts_1and10 AS INT) = 1 THEN tractblack
+				ELSE NULL
+			   END is_lila_black
+			  ,CASE
+				WHEN CAST(lilatracts_1and10 AS INT) = 1 THEN tractasian
+				ELSE NULL
+			   END is_lila_asian
+			  ,CASE
+				WHEN CAST(lilatracts_1and10 AS INT) = 1 THEN tractnhopi
+				ELSE NULL
+			   END is_lila_nhopi
+			  ,CASE
+				WHEN CAST(lilatracts_1and10 AS INT) = 1 THEN tractaian
+				ELSE NULL
+			   END is_lila_aian
+			  ,CASE
+				WHEN CAST(lilatracts_1and10 AS INT) = 1 THEN tractomultir
+				ELSE NULL
+			   END is_lila_multir
+			  ,CASE
+				WHEN CAST(lilatracts_1and10 AS INT) = 1 THEN tracthispanic
+				ELSE NULL
+			   END is_lila_hispanic
+			  ,CASE
+				WHEN CAST(lilatracts_1and10 AS INT) = 1 THEN tractsnap
+				ELSE NULL
+			   END is_lila_snap
+			  ,CASE
+				WHEN CAST(lilatracts_1and10 AS INT) = 0 THEN tractwhite
+				ELSE NULL
+			   END not_lila_white
+			  ,CASE
+				WHEN CAST(lilatracts_1and10 AS INT) = 0 THEN tractblack
+				ELSE NULL
+			   END not_lila_black
+			  ,CASE
+				WHEN CAST(lilatracts_1and10 AS INT) = 0 THEN tractasian
+				ELSE NULL
+			   END not_lila_asian
+			  ,CASE
+				WHEN CAST(lilatracts_1and10 AS INT) = 0 THEN tractnhopi
+				ELSE NULL
+			   END not_lila_nhopi
+			  ,CASE
+				WHEN CAST(lilatracts_1and10 AS INT) = 0 THEN tractaian
+				ELSE NULL
+			   END not_lila_aian
+			  ,CASE
+				WHEN CAST(lilatracts_1and10 AS INT) = 0 THEN tractomultir
+				ELSE NULL
+			   END not_lila_multir
+			  ,CASE
+				WHEN CAST(lilatracts_1and10 AS INT) = 0 THEN tracthispanic
+				ELSE NULL
+			   END not_lila_hispanic
+			  ,CASE
+				WHEN state = 'Alabama' THEN 'AL'
+				WHEN state = 'Alaska' THEN 'AK'
+				WHEN state = 'Arizona' THEN 'AZ'
+				WHEN state = 'Arkansas' THEN 'AR'
+				WHEN state = 'California' THEN 'CA'
+				WHEN state = 'Colorado' THEN 'CO'
+				WHEN state = 'Connecticut' THEN 'CT'
+				WHEN state = 'Delaware' THEN 'DE'
+				WHEN state = 'District of Columbia' THEN 'DC'
+				WHEN state = 'Florida' THEN 'FL'
+				WHEN state = 'Georgia' THEN 'GA'
+				WHEN state = 'Hawaii' THEN 'HI'
+				WHEN state = 'Idaho' THEN 'ID'
+				WHEN state = 'Illinois' THEN 'IL'
+				WHEN state = 'Indiana' THEN 'IN'
+				WHEN state = 'Iowa' THEN 'IA'
+				WHEN state = 'Kansas' THEN 'KS'
+				WHEN state = 'Kentucky' THEN 'KY'
+				WHEN state = 'Louisiana' THEN 'LA'
+				WHEN state = 'Maine' THEN 'ME'
+				WHEN state = 'Maryland' THEN 'MD'
+				WHEN state = 'Massachusetts' THEN 'MA'
+				WHEN state = 'Michigan' THEN 'MI'
+				WHEN state = 'Minnesota' THEN 'MN'
+				WHEN state = 'Mississippi' THEN 'MS'
+				WHEN state = 'Missouri' THEN 'MO'
+				WHEN state = 'Montana' THEN 'MT'
+				WHEN state = 'Nebraska' THEN 'NE'
+				WHEN state = 'Nevada' THEN 'NV'
+				WHEN state = 'New Hampshire' THEN 'NH'
+				WHEN state = 'New Jersey' THEN 'NJ'
+				WHEN state = 'New Mexico' THEN 'NM'
+				WHEN state = 'New York' THEN 'NY'
+				WHEN state = 'North Carolina' THEN 'NC'
+				WHEN state = 'North Dakota' THEN 'ND'
+				WHEN state = 'Ohio' THEN 'OH'
+				WHEN state = 'Oklahoma' THEN 'OK'
+				WHEN state = 'Oregon' THEN 'OR'
+				WHEN state = 'Pennsylvania' THEN 'PA'
+				WHEN state = 'Rhode Island' THEN 'RI'
+				WHEN state = 'South Carolina' THEN 'SC'
+				WHEN state = 'South Dakota' THEN 'SD'
+				WHEN state = 'Tennessee' THEN 'TN'
+				WHEN state = 'Texas' THEN 'TX'
+				WHEN state = 'Utah' THEN 'UT'
+				WHEN state = 'Vermont' THEN 'VT'
+				WHEN state = 'Virginia' THEN 'VA'
+				WHEN state = 'Washington' THEN 'WA'
+				WHEN state = 'West Virginia' THEN 'WV'
+				WHEN state = 'Wisconsin' THEN 'WI'
+				WHEN state = 'Wyoming' THEN 'WY'
+			   END stateCode
+			  ,CASE
+				WHEN state = 'Alabama' THEN 40933
+				WHEN state = 'Alaska' THEN 57848
+				WHEN state = 'Arizona' THEN 46896
+				WHEN state = 'Arkansas' THEN 38587
+				WHEN state = 'California' THEN 54283
+				WHEN state = 'Colorado' THEN 60233
+				WHEN state = 'Connecticut' THEN 65998
+				WHEN state = 'Delaware' THEN 55214
+				WHEN state = 'District of Columbia' THEN 56928
+				WHEN state = 'Florida' THEN 44066
+				WHEN state = 'Georgia' THEN 44117
+				WHEN state = 'Hawaii' THEN 59539
+				WHEN state = 'Idaho' THEN 47050
+				WHEN state = 'Illinois' THEN 50728
+				WHEN state = 'Indiana' THEN 46139
+				WHEN state = 'Iowa' THEN 49016
+				WHEN state = 'Kansas' THEN 46054
+				WHEN state = 'Kentucky' THEN 41104
+				WHEN state = 'Louisiana' THEN 39300
+				WHEN state = 'Maine' THEN 47931
+				WHEN state = 'Maryland' THEN 64201
+				WHEN state = 'Massachusetts' THEN 60934
+				WHEN state = 'Michigan' THEN 46276
+				WHEN state = 'Minnesota' THEN 52321
+				WHEN state = 'Mississippi' THEN 38160
+				WHEN state = 'Missouri' THEN 45817
+				WHEN state = 'Montana' THEN 41280
+				WHEN state = 'Nebraska' THEN 52504
+				WHEN state = 'Nevada' THEN 51200
+				WHEN state = 'New Hampshire' THEN 66633
+				WHEN state = 'New Jersey' THEN 62968
+				WHEN state = 'New Mexico' THEN 45134
+				WHEN state = 'New York' THEN 49781
+				WHEN state = 'North Carolina' THEN 43830
+				WHEN state = 'North Dakota' THEN 51006
+				WHEN state = 'Ohio' THEN 45886
+				WHEN state = 'Oklahoma' THEN 43103
+				WHEN state = 'Oregon' THEN 50602
+				WHEN state = 'Pennsylvania' THEN 48314
+				WHEN state = 'Rhode Island' THEN 51623
+				WHEN state = 'South Carolina' THEN 41698
+				WHEN state = 'South Dakota' THEN 45352
+				WHEN state = 'Tennessee' THEN 38591
+				WHEN state = 'Texas' THEN 47266
+				WHEN state = 'Utah' THEN 56701
+				WHEN state = 'Vermont' THEN 55928
+				WHEN state = 'Virginia' THEN 60367
+				WHEN state = 'Washington' THEN 56163
+				WHEN state = 'West Virginia' THEN 42777
+				WHEN state = 'Wisconsin' THEN 50351
+				WHEN state = 'Wyoming' THEN 52201
+			   END median_income
+		FROM data_food_deserts
+		) b
+	) a
+GROUP BY state
+ 		,stateCode
+ 		,median_income
+ORDER BY ROUND(SUM(CAST(is_lila_pop AS FLOAT)) / SUM(CAST(pop2010 AS FLOAT))*100) DESC)
+;
+ALTER TABLE nat_stat_table
+ADD PRIMARY KEY (state);
+;
 
 -- Other columns not currently in use from data_vulnerability_mult.sql schema:
 -- ,OBJECTID      

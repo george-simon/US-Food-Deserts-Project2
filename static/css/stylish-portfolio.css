@@ -373,3 +373,60 @@ a:hover, a:focus, a:active {
 .text-secondary {
   color: #ecb807 !important;
 }
+
+.data-display-header {
+  text-align: center;
+  font-size: 50px;
+  margin-top: 3rem;
+  margin-left: 3rem;
+  margin-right: 3rem;
+  margin-bottom: 3rem;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.col-md-5 {
+  text-align: center;
+  font-size: 40px;
+}
+
+.col-md-6 {
+  text-align: center;
+  font-size: 40px;
+}
+
+.col-md-7 {
+  text-align: center;
+  font-size: 40px;
+}
+
+b {
+  font-size: 40px;
+}
+
+.fact-credit {
+  font-size: 15px;
+  font-style: italic;
+}
+
+.more-less {
+  font-size: 30px;
+}
+
+.other-races {
+  font-size: 20px;
+  font-style: italic;
+}
+
+.dataframe {
+  text-align: center;
+}
+
+.summary {
+  margin-top: 3rem;
+  text-align: center;
+}
+
+#scatter {
+  text-align: center;
+}
