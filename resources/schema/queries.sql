@@ -67,7 +67,11 @@ ALTER TABLE multnomah_summary_data
 ADD PRIMARY KEY (county);
 
 -- State Food Desert Stats (For Data Table) --
+<<<<<<< HEAD
 DROP TABLE nat_stat_table;
+=======
+DROP TABLE IF EXISTS nat_stat_table;
+>>>>>>> main
 CREATE TABLE nat_stat_table AS
 (SELECT state AS State
  	  ,stateCode
@@ -290,6 +294,95 @@ ORDER BY ROUND(SUM(CAST(is_lila_pop AS FLOAT)) / SUM(CAST(pop2010 AS FLOAT))*100
 ;
 ALTER TABLE nat_stat_table
 ADD PRIMARY KEY (state);
+;
+
+
+DROP TABLE IF EXISTS nat_map;
+CREATE TABLE nat_map AS
+(SELECT CONCAT(county,' County, ',stateCode) AS name
+	  ,CAST(((lilatract_1and10_sum / lilatract_1and10_count) * 100) AS INT) AS value
+FROM 
+	(
+	SELECT state
+		  ,county
+		  ,SUM(CAST(lilatracts_1and10 AS FLOAT)) AS lilatract_1and10_sum
+		  ,COUNT(CAST(lilatracts_1and10 AS FLOAT)) AS lilatract_1and10_count
+		  ,CASE
+			WHEN state = 'Alabama' THEN 'AL'
+			WHEN state = 'Alaska' THEN 'AK'
+			WHEN state = 'Arizona' THEN 'AZ'
+			WHEN state = 'Arkansas' THEN 'AR'
+			WHEN state = 'California' THEN 'CA'
+			WHEN state = 'Colorado' THEN 'CO'
+			WHEN state = 'Connecticut' THEN 'CT'
+			WHEN state = 'Delaware' THEN 'DE'
+			WHEN state = 'District of Columbia' THEN 'DC'
+			WHEN state = 'Florida' THEN 'FL'
+			WHEN state = 'Georgia' THEN 'GA'
+			WHEN state = 'Hawaii' THEN 'HI'
+			WHEN state = 'Idaho' THEN 'ID'
+			WHEN state = 'Illinois' THEN 'IL'
+			WHEN state = 'Indiana' THEN 'IN'
+			WHEN state = 'Iowa' THEN 'IA'
+			WHEN state = 'Kansas' THEN 'KS'
+			WHEN state = 'Kentucky' THEN 'KY'
+			WHEN state = 'Louisiana' THEN 'LA'
+			WHEN state = 'Maine' THEN 'ME'
+			WHEN state = 'Maryland' THEN 'MD'
+			WHEN state = 'Massachusetts' THEN 'MA'
+			WHEN state = 'Michigan' THEN 'MI'
+			WHEN state = 'Minnesota' THEN 'MN'
+			WHEN state = 'Mississippi' THEN 'MS'
+			WHEN state = 'Missouri' THEN 'MO'
+			WHEN state = 'Montana' THEN 'MT'
+			WHEN state = 'Nebraska' THEN 'NE'
+			WHEN state = 'Nevada' THEN 'NV'
+			WHEN state = 'New Hampshire' THEN 'NH'
+			WHEN state = 'New Jersey' THEN 'NJ'
+			WHEN state = 'New Mexico' THEN 'NM'
+			WHEN state = 'New York' THEN 'NY'
+			WHEN state = 'North Carolina' THEN 'NC'
+			WHEN state = 'North Dakota' THEN 'ND'
+			WHEN state = 'Ohio' THEN 'OH'
+			WHEN state = 'Oklahoma' THEN 'OK'
+			WHEN state = 'Oregon' THEN 'OR'
+			WHEN state = 'Pennsylvania' THEN 'PA'
+			WHEN state = 'Rhode Island' THEN 'RI'
+			WHEN state = 'South Carolina' THEN 'SC'
+			WHEN state = 'South Dakota' THEN 'SD'
+			WHEN state = 'Tennessee' THEN 'TN'
+			WHEN state = 'Texas' THEN 'TX'
+			WHEN state = 'Utah' THEN 'UT'
+			WHEN state = 'Vermont' THEN 'VT'
+			WHEN state = 'Virginia' THEN 'VA'
+			WHEN state = 'Washington' THEN 'WA'
+			WHEN state = 'West Virginia' THEN 'WV'
+			WHEN state = 'Wisconsin' THEN 'WI'
+			WHEN state = 'Wyoming' THEN 'WY'
+		   END stateCode
+	FROM data_food_deserts
+	GROUP BY state
+			,county
+	) a
+ORDER BY value DESC)
+;
+
+
+DROP TABLE IF EXISTS nat_map_json;
+CREATE TABLE nat_map_json (
+   code         VARCHAR(10)  PRIMARY KEY 
+  ,name                VARCHAR(60)
+  ,value               FLOAT IS NOT NULL
+);
+
+DROP TABLE IF EXISTS clean_nat_map_json;
+CREATE TABLE clean_nat_map_json AS (
+SELECT *
+FROM nat_map_json
+WHERE value IS NOT NULL
+);
+ALTER TABLE clean_nat_map_json
+ADD PRIMARY KEY (code);
 ;
 
 -- Other columns not currently in use from data_vulnerability_mult.sql schema:
