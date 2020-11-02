@@ -29,7 +29,7 @@ national = Base.classes.national_data
 # I'm pulling the data_food_deserts table because the national_data table does not have a primary key yet
 multnomah = Base.classes.multnomah_data
 # Adding table of summarized values for natstat county
-# multsum = Base.classes.multnomah_summary_data
+multsum = Base.classes.multnomah_summary_data
 # Adding table of summarized values for National Data
 natstat = Base.classes.nat_stat_table
 
@@ -96,38 +96,38 @@ def multdata():
 
     return jsonify(mult_results)
 
-# @app.route("/api/v1.0/multsummarydata")
-# def multsumdata():
+@app.route("/api/v1.0/multsummarydata")
+def multsumdata():
 
-#     session = Session(engine)
+    session = Session(engine)
 
-#     results = session.query(
-#             multsum.county, 
-#             multsum.sum_population_2010, 
-#             multsum.sum_population_low_income, 
-#             multsum.median_percent_poverty, 
-#             multsum.median_family_income, 
-#             multsum.sum_house_unit_no_vehicle,
-#             multsum.sum_population_low_access_half,
-#             multsum.sum_population_low_access_1).all()
+    results = session.query(
+            multsum.county, 
+            multsum.sum_population_2010, 
+            multsum.sum_population_low_income, 
+            multsum.median_percent_poverty, 
+            multsum.median_family_income, 
+            multsum.sum_house_unit_no_vehicle,
+            multsum.sum_population_low_access_half,
+            multsum.sum_population_low_access_1).all()
   
-#     session.close()
+    session.close()
 
-#     multsum_results = []
+    multsum_results = []
 
-#     for item in results:
-#         item_dict = {}
-#         item_dict["county"] = item[0]
-#         item_dict["sum_population_2010"] = item[1]
-#         item_dict["sum_population_low_income"] = item[2]
-#         item_dict["median_percent_poverty"] = item[3]
-#         item_dict["median_family_income"] = item[4]
-#         item_dict["sum_house_unit_no_vehicle"] = item[5]
-#         item_dict["sum_population_low_access_half"] = item[6]
-#         item_dict["sum_population_low_access_1"] = item[7]
-#         multsum_results.append(item_dict)
+    for item in results:
+        item_dict = {}
+        item_dict["county"] = item[0]
+        item_dict["sum_population_2010"] = item[1]
+        item_dict["sum_population_low_income"] = item[2]
+        item_dict["median_percent_poverty"] = item[3]
+        item_dict["median_family_income"] = item[4]
+        item_dict["sum_house_unit_no_vehicle"] = item[5]
+        item_dict["sum_population_low_access_half"] = item[6]
+        item_dict["sum_population_low_access_1"] = item[7]
+        multsum_results.append(item_dict)
 
-#     return jsonify(multsum_results)
+    return jsonify(multsum_results)
 
 @app.route("/api/v1.0/natstatdata")
 def natstatdata():
@@ -135,8 +135,6 @@ def natstatdata():
     session = Session(engine)
 
     results = session.query(natstat.state, natstat.statecode, natstat.total_2010_pop, natstat.food_desert_pop, natstat.non_food_desert_pop, natstat.percent_food_desert, natstat.percent_non_food_desert, natstat.white_more_less_likely_fd, natstat.black_more_less_likely_fd, natstat.amer_ind_ak_native_more_less_likely_fd, natstat.asian_more_less_likely_fd, natstat.native_hi_pac_is_more_less_likely_fd, natstat.multi_race_more_less_likely_fd, natstat.hispanic_more_less_likely_fd, natstat.white_percent_food_desert, natstat.black_percent_food_desert, natstat.amer_ind_ak_native_percent_food_desert, natstat.asian_percent_food_desert, natstat.native_hi_pac_is_percent_food_desert, natstat.multi_race_percent_food_desert, natstat.hispanic_percent_food_desert, natstat.white_percent_not_food_desert, natstat.black_percent_not_food_desert, natstat.amer_ind_ak_native_percent_not_food_desert, natstat.asian_percent_not_food_desert, natstat.native_hi_pac_is_percent_not_food_desert, natstat.multi_race_percent_not_food_desert, natstat.hispanic_percent_not_food_desert, natstat.median_income).all()
-    # Was not able to load natstat.percent_poverty it contains a decimal. Need to be integers.
-    # , natstat.population_low_access_half, natstat.population_low_access_1
 
     session.close()
 
