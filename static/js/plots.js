@@ -73,6 +73,15 @@ function buildplot() {
     var trace2 = {
       x: statistic2_name,
       y: statistic2_value,
+      marker:{
+        color: ['rgba(204,204,204,1)', 
+                'rgba(222,45,38,0.8)', 
+                'rgba(204,204,204,1)', 
+                'rgba(204,204,204,1)', 
+                'rgba(204,204,204,1)',
+                'rgba(204,204,204,1)', 
+                'rgba(204,204,204,1)']
+      },
       type: "bar"
     };
 
@@ -80,7 +89,7 @@ function buildplot() {
 
     // Define the plot layout
     var layout2 = {
-    title: "Vulnerability to changing economic" + "/n" +"conditions for Multnomah County",
+    title: "Vulnerability to changing economic conditions for Multnomah County",
     xaxis: { title: "Risk Factors and Risk Scores" },
     yaxis: { title: "Percent" }
     };
