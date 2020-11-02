@@ -28,6 +28,8 @@ print(Base.classes.keys())
 national = Base.classes.national_data
 # I'm pulling the data_food_deserts table because the national_data table does not have a primary key yet
 multnomah = Base.classes.multnomah_data
+# Adding table of summarized values for Multnomah county
+multsum = Base.classes.multnomah_summary_data
 
 # Step 4: Create routes including a root level and API call routes
 @app.route("/")
@@ -97,6 +99,38 @@ def multdata():
 
     return jsonify(mult_results)
 
+@app.route("/api/v1.0/multsummarydata")
+def multsumdata():
+
+    session = Session(engine)
+
+    results = session.query(
+            multsum.county, 
+            multsum.sum_population_2010, 
+            multsum.sum_population_low_income, 
+            multsum.median_percent_poverty, 
+            multsum.median_family_income, 
+            multsum.sum_house_unit_no_vehicle,
+            multsum.sum_population_low_access_half,
+            multsum.sum_population_low_access_1).all()
+  
+    session.close()
+
+    multsum_results = []
+
+    for item in results:
+        item_dict = {}
+        item_dict["county"] = item[0]
+        item_dict["sum_population_2010"] = item[1]
+        item_dict["sum_population_low_income"] = item[2]
+        item_dict["median_percent_poverty"] = item[3]
+        item_dict["median_family_income"] = item[4]
+        item_dict["sum_house_unit_no_vehicle"] = item[5]
+        item_dict["sum_population_low_access_half"] = item[6]
+        item_dict["sum_population_low_access_1"] = item[7]
+        multsum_results.append(item_dict)
+
+    return jsonify(multsum_results)
 
 # Boiler plate flask app code
 if __name__ == "__main__":

@@ -66,7 +66,7 @@ d3.json("/api/v1.0/multdata").then(multdata => {
       census_tracts.push(census_tract)
     };
 
-    console.log(census_tracts)
+  // console.log(data)
 
     // Define percent_la_half from multdata
     let percent_la_half = [];
