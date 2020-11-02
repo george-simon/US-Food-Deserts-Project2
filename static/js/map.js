@@ -32,11 +32,11 @@ d3.json("/api/v1.0/natdata").then(data => {
     return l.properties['hc-group'] === '__separator_lines__';
   });
 
-  // // Add state acronym for tooltip
-  // Highcharts.each(countiesMap, function (mapPoint) {
-  // mapPoint.state = mapPoint.state + ', ' +
-  //   mapPoint.properties['state'].substr(3, 2);
-  // });
+  // Add state acronym for tooltip
+  Highcharts.each(countiesMap, function (mapPoint) {
+  mapPoint.state = mapPoint.state + ', ' +
+    mapPoint.properties['hc-key'].substr(3, 2);
+  });
 
   document.getElementById('container').innerHTML = 'Rendering map...';
 
@@ -87,7 +87,7 @@ d3.json("/api/v1.0/natdata").then(data => {
     series: [{
       mapData: countiesMap,
       data: data,
-      joinBy: ['county'], // ['hc-key', 'code']
+      joinBy: ['hc-key', 'code'],
       name: 'Food Deserts',
       tooltip: {
         valueSuffix: '%'

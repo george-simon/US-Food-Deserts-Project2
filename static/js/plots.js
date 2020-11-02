@@ -94,8 +94,10 @@ function buildplot() {
     yaxis: { title: "Percent" }
     };
 
-  Plotly.newPlot("plot1", data, layout);
-  Plotly.newPlot("plot2", data2, layout2);
+    var config = {responsive: true}
+
+  Plotly.newPlot("plot1", data, layout, config);
+  Plotly.newPlot("plot2", data2, layout2, config);
 });
 }
 

@@ -1,6 +1,2 @@
-<<<<<<< HEAD
-PW = "postgres"
-=======
-PW = "bRanch773millisecond!"
->>>>>>> main
+PW = "sM23US7TMu"
 
