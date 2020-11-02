@@ -28,8 +28,10 @@ print(Base.classes.keys())
 national = Base.classes.national_data
 # I'm pulling the data_food_deserts table because the national_data table does not have a primary key yet
 multnomah = Base.classes.multnomah_data
-# Adding table of summarized values for Multnomah county
-multsum = Base.classes.multnomah_summary_data
+# Adding table of summarized values for natstat county
+# multsum = Base.classes.multnomah_summary_data
+# Adding table of summarized values for National Data
+natstat = Base.classes.nat_stat_table
 
 # Step 4: Create routes including a root level and API call routes
 @app.route("/")
@@ -38,7 +40,7 @@ def home():
     # In the root level route, link to API call routes
     # return (
     #     f"<a href='/api/v1.0/natdata'>National Data</a><br/>"
-    #     f"<a href='/api/v1.0/multdata'>Multnomah County, Oregon Data</a><br/>"
+    #     f"<a href='/api/v1.0/multdata'>natstat County, Oregon Data</a><br/>"
     # )
 
     # Added render_template to root route
@@ -73,8 +75,8 @@ def multdata():
     session = Session(engine)
 
     results = session.query(multnomah.census_tract, multnomah.population_2010, multnomah.population_low_income, multnomah.med_fam_income, multnomah.house_unit_no_vehicle, multnomah.population_low_access_half, multnomah.population_low_access_1, multnomah.percent_poverty).all()
-    # Was not able to load multnomah.percent_poverty it contains a decimal. Need to be integers.
-    # , multnomah.population_low_access_half, multnomah.population_low_access_1
+    # Was not able to load natstat.percent_poverty it contains a decimal. Need to be integers.
+    # , natstat.population_low_access_half, natstat.population_low_access_1
 
     session.close()
 
@@ -94,38 +96,86 @@ def multdata():
 
     return jsonify(mult_results)
 
-@app.route("/api/v1.0/multsummarydata")
-def multsumdata():
+# @app.route("/api/v1.0/multsummarydata")
+# def multsumdata():
+
+#     session = Session(engine)
+
+#     results = session.query(
+#             multsum.county, 
+#             multsum.sum_population_2010, 
+#             multsum.sum_population_low_income, 
+#             multsum.median_percent_poverty, 
+#             multsum.median_family_income, 
+#             multsum.sum_house_unit_no_vehicle,
+#             multsum.sum_population_low_access_half,
+#             multsum.sum_population_low_access_1).all()
+  
+#     session.close()
+
+#     multsum_results = []
+
+#     for item in results:
+#         item_dict = {}
+#         item_dict["county"] = item[0]
+#         item_dict["sum_population_2010"] = item[1]
+#         item_dict["sum_population_low_income"] = item[2]
+#         item_dict["median_percent_poverty"] = item[3]
+#         item_dict["median_family_income"] = item[4]
+#         item_dict["sum_house_unit_no_vehicle"] = item[5]
+#         item_dict["sum_population_low_access_half"] = item[6]
+#         item_dict["sum_population_low_access_1"] = item[7]
+#         multsum_results.append(item_dict)
+
+#     return jsonify(multsum_results)
+
+@app.route("/api/v1.0/natstatdata")
+def natstatdata():
 
     session = Session(engine)
 
-    results = session.query(
-            multsum.county, 
-            multsum.sum_population_2010, 
-            multsum.sum_population_low_income, 
-            multsum.median_percent_poverty, 
-            multsum.median_family_income, 
-            multsum.sum_house_unit_no_vehicle,
-            multsum.sum_population_low_access_half,
-            multsum.sum_population_low_access_1).all()
-  
+    results = session.query(natstat.state, natstat.statecode, natstat.total_2010_pop, natstat.food_desert_pop, natstat.non_food_desert_pop, natstat.percent_food_desert, natstat.percent_non_food_desert, natstat.white_more_less_likely_fd, natstat.black_more_less_likely_fd, natstat.amer_ind_ak_native_more_less_likely_fd, natstat.asian_more_less_likely_fd, natstat.native_hi_pac_is_more_less_likely_fd, natstat.multi_race_more_less_likely_fd, natstat.hispanic_more_less_likely_fd, natstat.white_percent_food_desert, natstat.black_percent_food_desert, natstat.amer_ind_ak_native_percent_food_desert, natstat.asian_percent_food_desert, natstat.native_hi_pac_is_percent_food_desert, natstat.multi_race_percent_food_desert, natstat.hispanic_percent_food_desert, natstat.white_percent_not_food_desert, natstat.black_percent_not_food_desert, natstat.amer_ind_ak_native_percent_not_food_desert, natstat.asian_percent_not_food_desert, natstat.native_hi_pac_is_percent_not_food_desert, natstat.multi_race_percent_not_food_desert, natstat.hispanic_percent_not_food_desert, natstat.median_income).all()
+    # Was not able to load natstat.percent_poverty it contains a decimal. Need to be integers.
+    # , natstat.population_low_access_half, natstat.population_low_access_1
+
     session.close()
 
-    multsum_results = []
+    nat_stat_results = []
 
     for item in results:
         item_dict = {}
-        item_dict["county"] = item[0]
-        item_dict["sum_population_2010"] = item[1]
-        item_dict["sum_population_low_income"] = item[2]
-        item_dict["median_percent_poverty"] = item[3]
-        item_dict["median_family_income"] = item[4]
-        item_dict["sum_house_unit_no_vehicle"] = item[5]
-        item_dict["sum_population_low_access_half"] = item[6]
-        item_dict["sum_population_low_access_1"] = item[7]
-        multsum_results.append(item_dict)
+        item_dict["state"] = item[0]
+        item_dict["statecode"] = item[1]
+        item_dict["total_2010_pop"] = item[2]
+        item_dict["food_desert_pop"] = item[3]
+        item_dict["non_food_desert_pop"] = item[4]
+        item_dict["percent_food_desert"] = item[5]
+        item_dict["percent_non_food_desert"] = item[6]
+        item_dict["white_more_less_likely_fd"] = item[7]
+        item_dict["black_more_less_likely_fd"] = item[8]
+        item_dict["amer_ind_ak_native_more_less_likely_fd"] = item[9]
+        item_dict["asian_more_less_likely_fd"] = item[10]
+        item_dict["native_hi_pac_is_more_less_likely_fd"] = item[11]
+        item_dict["multi_race_more_less_likely_fd"] = item[12]
+        item_dict["hispanic_more_less_likely_fd"] = item[13]
+        item_dict["white_percent_food_desert"] = item[14]
+        item_dict["black_percent_food_desert"] = item[15]
+        item_dict["amer_ind_ak_native_percent_food_desert"] = item[16]
+        item_dict["asian_percent_food_desert"] = item[17]
+        item_dict["native_hi_pac_is_percent_food_desert"] = item[18]
+        item_dict["multi_race_percent_food_desert"] = item[19]
+        item_dict["hispanic_percent_food_desert"] = item[20]
+        item_dict["white_percent_not_food_desert"] = item[21]
+        item_dict["black_percent_not_food_desert"] = item[22]
+        item_dict["amer_ind_ak_native_percent_not_food_desert"] = item[23]
+        item_dict["asian_percent_not_food_desert"] = item[24]
+        item_dict["native_hi_pac_is_percent_not_food_desert"] = item[25]
+        item_dict["multi_race_percent_not_food_desert"] = item[26]
+        item_dict["hispanic_percent_not_food_desert"] = item[27]
+        item_dict["median_income"] = item[28]
+        nat_stat_results.append(item_dict)
 
-    return jsonify(multsum_results)
+    return jsonify(nat_stat_results)
 
 # Boiler plate flask app code
 if __name__ == "__main__":
