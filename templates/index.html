@@ -22,7 +22,7 @@
   <link href="../static/vendor-2/simple-line-icons/css/simple-line-icons.css" rel="stylesheet">
 
   <!-- Custom CSS -->
-  <link href="../static/css/stylish-portfolio.min.css" rel="stylesheet">
+  <link href="../static/css/stylish-portfolio.css" rel="stylesheet">
 
   <!-- Template Main CSS File -->
   <link href="../static/css/style.css" rel="stylesheet">
@@ -120,6 +120,47 @@
     </div>
   </section>
 
+  <!-- BROCK'S US Data Display -->
+  <section>
+    <div>
+      <div class="data-display-header">NATIONAL FOOD DESERT FACTS</div>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            People living in census tract described as a food desert in America: <h1>39.4M (13% of US Pop.)</h1>
+            <div class="fact-credit">-US Census Bureau: 2010 Census Data</div>
+          </div>
+          <div class="col-md-6 more-less">
+            If you are...
+            <div>White: you are <b>10% less likely</b>...</div>
+            <div>Black: you are <b>10% more likely</b>...</div>
+            <div>Hispanic: you are <b>4% more likely</b>...</div>
+            <div>Asian: you are <b>3% less likely</b>...</div>
+            to live in a census tract described as a food desert in America.
+            <div class="other-races">(All other races in data set between 0-1% difference)</div>
+            <div class="fact-credit">-US Census Bureau: 2010 Census Data</div>
+          </div>
+        </div>
+        <div class="row justify-content-center body-section">
+          <div class="col-md-12">
+              <div class= "home-subject">
+                  <h2 class="summary">
+                      State Data Table
+                  </h2>
+                  <hr>
+                  <div id="scatter">
+                    <!-- Append National Stat chart here. -->
+                  </div>
+              </div>
+          </div>
+      </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Oregon Map -->
+  <section class="content-section bg-light" id="about">
   <!-- US Facts -->
   <section class="content-section bg-light">
     <div class="container text-center">
@@ -384,9 +425,10 @@
   <!-- Js for Leaflet Map -->
   <script type="text/javascript" src="../static/js/multmapleaflet.js"></script>
 
+  <!-- National Data JavaScript -->
+  <script type="text/javascript" src="../static/js/nat_stat.js"></script>
+  
   <!-- For Plotly Plots coming in from plots.js-->
-  <div id="plot1"></div>
-  <div id="plot2"></div>
   <script src="../static/js/plots.js"></script>
 
 </body>
