@@ -15,14 +15,16 @@
 
 .legend {
   line-height: 18px;
-  color: #555;
+  color: #000;
+  background: #fff;
 }
+
 .legend i {
   width: 30px;
   height: 18px;
   float: left;
   margin-right: 8px;
-  opacity: 1;
+  opacity: .6;
 }
 
 /* Team Section
