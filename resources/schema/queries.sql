@@ -9,11 +9,12 @@ CensusTract AS census_tract
 ,MedianFamilyIncome AS med_fam_income
 ,TractHUNV AS house_unit_no_vehicle
 ,CAST(ROUND(lapophalf) AS INT) AS population_low_access_half
+,CAST((ROUND((lapophalf / POP2010) * 100)) AS INT) AS percent_low_access_half
 ,CAST(ROUND(lapop1) AS INT) AS population_low_access_1
+,CAST((ROUND((lapop1 / POP2010) * 100)) AS INT) AS percent_low_access_1
 FROM data_food_deserts
 INNER JOIN data_vulnerability_multi
-ON data_food_deserts.CensusTract = data_vulnerability_multi.fips
-WHERE POP2010 > 100);
+ON data_food_deserts.CensusTract = data_vulnerability_multi.fips);
 ALTER TABLE multnomah_data
 ADD PRIMARY KEY (census_tract);
 
@@ -35,7 +36,8 @@ ADD PRIMARY KEY (State, County);
 
 DROP TABLE IF EXISTS multnomah_summary_data; 
 CREATE TABLE multnomah_summary_data AS
-(SELECT 
+(
+SELECT 
  data_food_deserts.county
 ,sum(POP2010) AS sum_population_2010
 ,sum(TractLOWI) AS sum_population_low_income
@@ -44,11 +46,22 @@ CREATE TABLE multnomah_summary_data AS
 ,SUM(TractHUNV) AS sum_house_unit_no_vehicle
 ,SUM(CAST(ROUND(lapophalf) AS INT)) AS sum_population_low_access_half
 ,SUM(CAST(ROUND(lapop1) AS INT)) AS sum_population_low_access_1
+,CAST(AVG(perc_renters) AS INTEGER) AS percent_renters
+,CAST(AVG(perc_com_color) AS INTEGER) AS percent_households_of_color
+,CAST(AVG(perc_wo_bachlrs_degree) AS INTEGER) AS percent_no_bachlrs
+,CAST(AVG(perc_hhs_80_mfi) AS INTEGER) AS percent_households_lessthan_80pcnt_of_mfi_score
+,CAST(AVG(risk_renters) AS INTEGER) AS mean_risk_renters
+,CAST(AVG(risk_com_color) AS INTEGER) AS mean_risk_households_of_color
+,CAST(AVG(risk_25_wo_bachlrs_degree) AS INTEGER) AS mean_risk_over_25_wo_bachlrs
+,CAST(AVG(risk_80_mfi) AS INTEGER) AS mean_risk_with_lessthan_80pcnt_of_mfi_score 
+,CAST(AVG(risk_total) AS INTEGER) AS mean_risk_factor
+
 FROM data_food_deserts
 INNER JOIN data_vulnerability_multi
 ON data_food_deserts.CensusTract = data_vulnerability_multi.fips
 WHERE POP2010 > 100
-group by data_food_deserts.county);
+group by data_food_deserts.county
+);
 
 ALTER TABLE multnomah_summary_data
 ADD PRIMARY KEY (county);

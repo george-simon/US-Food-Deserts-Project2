@@ -40,11 +40,14 @@
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
     integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
     crossorigin="" />
-  
-  <!-- <script type="text/javascript" src="../static/js/highchart.js"></script> -->
+ 
   <!-- <script type="text/javascript" src="../static/js/multmapleaflet.js"></script> -->
-  
 
+  <!-- D3 JavaScript -->
+  <script src="https://d3js.org/d3.v5.min.js"></script>
+  
+  <!-- For plotly plots-->
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 </head>
 
 <body id="page-top">
@@ -56,7 +59,7 @@
   <nav id="sidebar-wrapper">
     <ul class="sidebar-nav">
       <li class="sidebar-brand">
-        <a class="js-scroll-trigger" href="#page-top">Start Bootstrap</a>
+        <a class="js-scroll-trigger" href="#page-top">U.S Food Deserts</a>
       </li>
       <li class="sidebar-nav-item">
         <a class="js-scroll-trigger" href="#page-top">Home</a>
@@ -68,10 +71,10 @@
         <a class="js-scroll-trigger" href="#usmap">U.S Food Desert Map</a>
       </li>
       <li class="sidebar-nav-item">
-        <a class="js-scroll-trigger" href="#portfolio">Portfolio</a>
+        <a class="js-scroll-trigger" href="#pdx">Oregon - Multnomah County</a>
       </li>
       <li class="sidebar-nav-item">
-        <a class="js-scroll-trigger" href="#contact">Contact</a>
+        <a class="js-scroll-trigger" href="#team">Meet the Team</a>
       </li>
     </ul>
   </nav>
@@ -106,12 +109,14 @@
   <section class="masthead d-flex" id="usmap">
     <div class="container text-center">
       <h1 class="mb-1">Where are Food Deserts?</h1>
-
-      <!-- The div that holds our US High Chart Map-->
-      <div id="container" style="height: 520px; width: 800px; margin: 0 auto; text-align:center; line-height: 520px">
-        Downloading map...
-      </div>
-
+        <div class="row">
+          <div class="col-lg-12 col-md-6 mb-5 mb-md-0">
+            <!-- The div that holds our US Highchart Map-->
+            <div id="container" style="height: 500px; width: 700px; margin: 0 auto; text-align:center; line-height: 520px">
+              Downloading map...
+            </div>
+          </div>
+        </div>
     </div>
   </section>
 
@@ -156,23 +161,38 @@
 
   <!-- Oregon Map -->
   <section class="content-section bg-light" id="about">
+  <!-- US Facts -->
+  <section class="content-section bg-light">
     <div class="container text-center">
       <div class="row">
-        <div class="col-lg-10 mx-auto">
-          <!-- The div that holds our US High Chart Map-->
-          <div id="map"></div>
-
+        <div class="col-lg-12 col-md-6 mb-5 mb-md-0">
+          
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Services
+  <!-- Multnomah Map -->
+  <section class="callout" id="pdx">
+    <div class="container text-center">
+      <h1 class="mb-1" id="mult-title">What is happening close to
+        <em>HOME</em>
+        ? </h1>
+        <div class="row">
+          <div class="col-lg-12 col-md-6 mb-5 mb-md-0">
+            <!-- The div that holds Leaflet Multnomah Map-->
+            <div id="map"></div>
+          </div>
+        </div>
+    </div>
+  </section>
+
+  <!-- Possible Space for Multnomah County Facts?? -->
   <section class="content-section bg-primary text-white text-center" id="services">
     <div class="container">
       <div class="content-section-heading">
-        <h3 class="text-secondary mb-0">Services</h3>
-        <h2 class="mb-5">What We Offer</h2>
+        <h3 class="text-secondary mb-0">Multnomah County</h3>
+        <h2 class="mb-5">Data Insights</h2>
       </div>
       <div class="row">
         <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
@@ -215,39 +235,34 @@
         </div>
       </div>
     </div>
-  </section> -->
-
-  <!-- Callout -->
-  <section class="callout">
-    <div class="container text-center">
-      <h2 class="mx-auto mb-5">Welcome to
-        <em>your</em>
-        next website!</h2>
-      <a class="btn btn-primary btn-xl" href="https://startbootstrap.com/themes/stylish-portfolio/">Download Now!</a>
-    </div>
   </section>
+
 
   <!-- Portfolio -->
   <section class="content-section" id="portfolio">
     <div class="container">
       <div class="content-section-heading text-center">
-        <h3 class="text-secondary mb-0">Portfolio</h3>
-        <h2 class="mb-5">Recent Projects</h2>
+        <h3 class="text-secondary mb-0">More Visualizations</h3>
+        <h2 class="mb-5">Multnomah County</h2>
       </div>
       <div class="row no-gutters">
         <div class="col-lg-6">
-          <a class="portfolio-item" href="#!">
+          <!-- For Plotly Plots coming in from plots.js-->
+          <div id="plot1"></div>
+          <!-- <a class="portfolio-item" href="#!">
             <div class="caption">
               <div class="caption-content">
                 <div class="h2">Stationary</div>
                 <p class="mb-0">A yellow pencil with envelopes on a clean, blue backdrop!</p>
               </div>
             </div>
-            <img class="img-fluid" src="../static/img/portfolio-1.jpg" alt="">
-          </a>
+            <img class="img-fluid" src="../static/img/portfolio-1.jpg" alt=""> -->
+          <!-- </a> -->
         </div>
         <div class="col-lg-6">
-          <a class="portfolio-item" href="#!">
+          <!-- For Plotly Plots coming in from plots.js-->
+          <div id="plot2"></div>
+          <!-- <a class="portfolio-item" href="#!">
             <div class="caption">
               <div class="caption-content">
                 <div class="h2">Ice Cream</div>
@@ -255,9 +270,9 @@
               </div>
             </div>
             <img class="img-fluid" src="../static/img/portfolio-2.jpg" alt="">
-          </a>
+          </a> -->
         </div>
-        <div class="col-lg-6">
+        <!-- <div class="col-lg-6">
           <a class="portfolio-item" href="#!">
             <div class="caption">
               <div class="caption-content">
@@ -278,19 +293,11 @@
             </div>
             <img class="img-fluid" src="../static/img/portfolio-4.jpg" alt="">
           </a>
-        </div>
+        </div> -->
       </div>
     </div>
   </section>
 
-  <!-- Call to Action -->
-  <section class="content-section bg-primary text-white">
-    <div class="container text-center">
-      <h2 class="mb-4">The buttons below are impossible to resist...</h2>
-      <a href="#!" class="btn btn-xl btn-light mr-4">Click Me!</a>
-      <a href="#!" class="btn btn-xl btn-dark">Look at Me!</a>
-    </div>
-  </section>
 
   <!-- ======= Team Section ======= -->
   <section id="team">
@@ -371,31 +378,13 @@
     </div>
   </section><!-- End Team Section -->
 
-  <!-- Map -->
-  <!-- <div id="contact" class="map">
-    <iframe src="https://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=Twitter,+Inc.,+Market+Street,+San+Francisco,+CA&amp;aq=0&amp;oq=twitter&amp;sll=28.659344,-81.187888&amp;sspn=0.128789,0.264187&amp;ie=UTF8&amp;hq=Twitter,+Inc.,+Market+Street,+San+Francisco,+CA&amp;t=m&amp;z=15&amp;iwloc=A&amp;output=embed"></iframe>
-    <br />
-    <small>
-      <a href="https://maps.google.com/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q=Twitter,+Inc.,+Market+Street,+San+Francisco,+CA&amp;aq=0&amp;oq=twitter&amp;sll=28.659344,-81.187888&amp;sspn=0.128789,0.264187&amp;ie=UTF8&amp;hq=Twitter,+Inc.,+Market+Street,+San+Francisco,+CA&amp;t=m&amp;z=15&amp;iwloc=A"></a>
-    </small>
-  </div> -->
 
-  <!-- Footer -->
+  <!-- GitHub Link Footer -->
   <footer class="footer text-center">
     <div class="container">
       <ul class="list-inline mb-5">
-        <!-- <li class="list-inline-item">
-          <a class="social-link rounded-circle text-white mr-3" href="#!">
-            <i class="icon-social-facebook"></i>
-          </a>
-        </li>
         <li class="list-inline-item">
-          <a class="social-link rounded-circle text-white mr-3" href="#!">
-            <i class="icon-social-twitter"></i>
-          </a>
-        </li> -->
-        <li class="list-inline-item">
-          <a class="social-link rounded-circle text-white" href="#!">
+          <a class="social-link rounded-circle text-white" href="https://github.com/george-simon/US-Food-Deserts-Project2">
             <i class="icon-social-github"></i>
           </a>
         </li>
@@ -430,18 +419,17 @@
   <!-- D3 JavaScript -->
   <script src="https://d3js.org/d3.v5.min.js"></script>
 
-  <!-- D3 -->
-  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.9.7/d3.min.js"></script>
-  <script src="https://d3js.org/d3.v6.min.js"></script> -->
-
   <!-- API key -->
   <script type="text/javascript" src="../static/js/config.js"></script>
 
-  <!-- Our JavaScript -->
+  <!-- Js for Leaflet Map -->
   <script type="text/javascript" src="../static/js/multmapleaflet.js"></script>
 
   <!-- National Data JavaScript -->
   <script type="text/javascript" src="../static/js/nat_stat.js"></script>
+  
+  <!-- For Plotly Plots coming in from plots.js-->
+  <script src="../static/js/plots.js"></script>
 
 </body>
 
