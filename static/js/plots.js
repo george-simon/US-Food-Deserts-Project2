@@ -25,10 +25,10 @@ function buildplot() {
     let percent_renters = data[0].percent_renters;
 
     statistic_name = ["Total Population",
-                      "Total Population with Low Access 1 Mile",
-                      "Total Population with Low Access Half Mile",
-                      "Total Population with Low Income",
-                      "Homes with no Vehicles"];
+                      "Population with<br>Low Access 1 Mile",
+                      "Population with<br>Low Access 1/2 Mile",
+                      "Population with<br>Low Income",
+                      "Homes with<br>no Vehicles"];
     
     statistic_value = [sum_population_2010,
                        sum_population_low_access_1,
@@ -40,6 +40,13 @@ function buildplot() {
     var trace1 = {
       x: statistic_name,
       y: statistic_value,
+      marker:{
+        color: ['rgba(0, 0, 255, 1)', 
+                'rgba(0, 0, 255, 1)', 
+                'rgba(0, 0, 255, 1)', 
+                'rgba(255, 0, 0, 1)', 
+                'rgba(255, 0, 0, 1)']
+      },
       type: "bar"
     };
 
@@ -47,21 +54,34 @@ function buildplot() {
 
     // Define the plot layout
   var layout = {
-    title: "Summary Statistics for Multnomah County",
-    xaxis: { title: "Population Statistics" },
-    yaxis: { title: "Population in 1000s" }
+    title: "Summary statistics of population <br> impacted by reduced access to healthy food <br> in Multnomah county.",
+    // xaxis: { title: "Population Statistics" },
+    yaxis: { title: "Population in 1000s" },
+      autosize: false,
+      width: 600,
+      height: 500,
+      margin: {
+        l: 70,
+        r: 70,
+        b: 120,
+        t: 100,
+        pad: 4
+      },
   };
 // Start of plot 2
-    statistic2_name = ["Percent of Population that rent",
-                      "Mean risk score for renters ",
-                      "Percent of Population without a Bachelor's Degree",
-                      "Mean risk score for age > 25 without Bachelor's Degree",
-                      "Percent of Population that are of color",
-                      "Mean risk score for households of color",
-                      "Overall mean risk score"
+    statistic2_name = [ 
+                      "Percent of Population<br>at or below poverty level", 
+                      "Percent of Population<br>that rents",
+                      "Mean risk score<br>for renters",
+                      "Percent of Population<br>without a BS Degree",
+                      "Mean risk score for<br>age>25 without BS Degree",
+                      "Percent of Population<br>that are of color",
+                      "Mean risk score for<br>households of color",
+                      "Overall mean<br>risk score"
                     ];
     
-    statistic2_value = [percent_renters,
+    statistic2_value = [median_percent_poverty,
+                        percent_renters,
                         mean_risk_renters,
                         percent_no_bachlrs,
                         mean_risk_over_25_wo_bachlrs,
@@ -74,13 +94,14 @@ function buildplot() {
       x: statistic2_name,
       y: statistic2_value,
       marker:{
-        color: ['rgba(204,204,204,1)', 
-                'rgba(222,45,38,0.8)', 
-                'rgba(204,204,204,1)', 
-                'rgba(204,204,204,1)', 
-                'rgba(204,204,204,1)',
-                'rgba(204,204,204,1)', 
-                'rgba(204,204,204,1)']
+        color: ['rgba(0, 0, 255, 1)',
+                'rgba(0, 0, 255, 1)', 
+                'rgba(255, 0, 0, 1)', 
+                'rgba(0, 0, 255, 1)', 
+                'rgba(255, 0, 0, 1)', 
+                'rgba(0, 0, 255, 1)',
+                'rgba(255, 0, 0, 1)', 
+                'rgba(255, 127, 0, 0.51)']
       },
       type: "bar"
     };
@@ -89,9 +110,19 @@ function buildplot() {
 
     // Define the plot layout
     var layout2 = {
-    title: "Vulnerability to changing economic conditions for Multnomah County",
-    xaxis: { title: "Risk Factors and Risk Scores" },
-    yaxis: { title: "Percent" }
+    title: "Groups vulnerable to changing economic <br> conditions for Multnomah County",
+    // xaxis: { title: "Risk Factors and Risk Scores" },
+    yaxis: { title: "Percent" },
+    autosize: false,
+      width: 600,
+      height: 500,
+      margin: {
+        l: 70,
+        r: 70,
+        b: 120,
+        t: 100,
+        pad: 4
+      },
     };
 
   Plotly.newPlot("plot1", data, layout);
