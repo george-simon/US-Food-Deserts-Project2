@@ -13,6 +13,18 @@
   text-align:center;
 }
 
+.legend {
+  line-height: 18px;
+  color: #555;
+}
+.legend i {
+  width: 30px;
+  height: 18px;
+  float: left;
+  margin-right: 8px;
+  opacity: 1;
+}
+
 /* Team Section
 --------------------------------*/
 #team {
