@@ -86,8 +86,7 @@ d3.json("/api/v1.0/multdata").then(multdata => {
       percent_renters.push(perc_renters)
     };
 
-    // console.log(percent_renters)
-
+    // Create function for color scale
     function getColor(d) {
       return d >= 89 ? '#a50026' :
              d >= 79 ? '#d73027' :
