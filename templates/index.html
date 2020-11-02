@@ -44,7 +44,8 @@
   <!-- <script type="text/javascript" src="../static/js/highchart.js"></script> -->
   <!-- <script type="text/javascript" src="../static/js/multmapleaflet.js"></script> -->
   
-
+  <!-- For plotly plots-->
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 </head>
 
 <body id="page-top">
@@ -197,18 +198,22 @@
       </div>
       <div class="row no-gutters">
         <div class="col-lg-6">
-          <a class="portfolio-item" href="#!">
+          <!-- For Plotly Plots coming in from plots.js-->
+          <div id="plot1"></div>
+          <!-- <a class="portfolio-item" href="#!">
             <div class="caption">
               <div class="caption-content">
                 <div class="h2">Stationary</div>
                 <p class="mb-0">A yellow pencil with envelopes on a clean, blue backdrop!</p>
               </div>
             </div>
-            <img class="img-fluid" src="../static/img/portfolio-1.jpg" alt="">
-          </a>
+            <img class="img-fluid" src="../static/img/portfolio-1.jpg" alt=""> -->
+          <!-- </a> -->
         </div>
         <div class="col-lg-6">
-          <a class="portfolio-item" href="#!">
+          <!-- For Plotly Plots coming in from plots.js-->
+          <div id="plot2"></div>
+          <!-- <a class="portfolio-item" href="#!">
             <div class="caption">
               <div class="caption-content">
                 <div class="h2">Ice Cream</div>
@@ -216,7 +221,7 @@
               </div>
             </div>
             <img class="img-fluid" src="../static/img/portfolio-2.jpg" alt="">
-          </a>
+          </a> -->
         </div>
         <div class="col-lg-6">
           <a class="portfolio-item" href="#!">
@@ -243,6 +248,8 @@
       </div>
     </div>
   </section>
+
+
 
   <!-- Call to Action -->
   <section class="content-section bg-primary text-white">
@@ -401,6 +408,10 @@
   <!-- Our JavaScript -->
   <script type="text/javascript" src="../static/js/multmapleaflet.js"></script>
 
+  <!-- For Plotly Plots coming in from plots.js-->
+  <div id="plot1"></div>
+  <div id="plot2"></div>
+  <script src="../static/js/plots.js"></script>
 
 </body>
 

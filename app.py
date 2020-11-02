@@ -107,7 +107,17 @@ def multsumdata():
             multsum.median_family_income, 
             multsum.sum_house_unit_no_vehicle,
             multsum.sum_population_low_access_half,
-            multsum.sum_population_low_access_1).all()
+            multsum.sum_population_low_access_1,
+            multsum.percent_renters,
+            multsum.percent_households_of_color,
+            multsum.percent_no_bachlrs,
+            multsum.percent_households_lessthan_80pcnt_of_mfi_score,
+            multsum.mean_risk_renters,
+            multsum.mean_risk_households_of_color,
+            multsum.mean_risk_over_25_wo_bachlrs,
+            multsum. mean_risk_with_lessthan_80pcnt_of_mfi_score,
+            multsum.mean_risk_factor            
+            ).all()
   
     session.close()
 
@@ -123,6 +133,15 @@ def multsumdata():
         item_dict["sum_house_unit_no_vehicle"] = item[5]
         item_dict["sum_population_low_access_half"] = item[6]
         item_dict["sum_population_low_access_1"] = item[7]
+        item_dict["percent_renters"] = item[8]
+        item_dict["percent_households_of_color"] = item[9]
+        item_dict["percent_no_bachlrs"] = item[10]
+        item_dict["percent_households_lessthan_80pcnt_of_mfi_score"] = item[11]
+        item_dict["mean_risk_renters"] = item[12]
+        item_dict["mean_risk_households_of_color"] = item[13]
+        item_dict["mean_risk_over_25_wo_bachlrs"] = item[14]
+        item_dict["mean_risk_with_lessthan_80pcnt_of_mfi_score"] = item[15]
+        item_dict["mean_risk_factor"] = item[16]            
         multsum_results.append(item_dict)
 
     return jsonify(multsum_results)
