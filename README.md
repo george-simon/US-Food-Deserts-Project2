@@ -47,9 +47,9 @@ After giving the visitor a brief overview of food deserts, we will guide them to
 * Final Analysis/Write Up - TEAM
 
 
-## Project Write-Up
+# Project Write-Up
 
-### Title-as taken from the project tasks
+## Title-as taken from the project tasks
 ______________________________
 <!-- if you plan on multiple sections -->
 #### Sub-Title
@@ -68,7 +68,7 @@ blah blah
 ![Images Link Example](/resources/images/<file>)
 
 
-### Front-End Development
+## Front-End Development
 ______________________________
 
 #### Requirements
@@ -103,7 +103,7 @@ The image below highlights the defination of a food desert. Again still drawing 
 ![Team Highlight](/resources/images/webpage-4.png)
 
 
-### Visualizations
+## Visualizations
 ______________________________
 <!-- if you plan on multiple sections -->
 #### Highcharts - US County Map
@@ -146,6 +146,7 @@ This mirrored food desert data was than brought into a jupyter notebook (*nat.ma
 
 #### Final Product
 Below is a image of the final product *color scheme* edited.
+* Note: Alaska and Louisiana didn't flow in
 ![Highcharts Map](/resources/images/highchart.PNG)
 
 
