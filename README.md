@@ -83,9 +83,9 @@ For the creation of the front-end webpage the focus was to keep the visitors gaz
 * Gorgeous Design & Theme
 
 #### Inspiration
+![Inspiration Canvas](/resources/images/web-inspiration.png)
 
-<!-- Below is code for inputting a image. All images will be saved in resources/images folder -->
-![Images Link Example](/resources/images/<file>)
+The above is a show case of some of the webpages that inspired the final design.
 
 
 
