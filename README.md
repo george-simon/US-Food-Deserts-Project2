@@ -141,11 +141,11 @@ This forum outlines that the high chart US County Map needs to take data in a sp
 ```
 * Note: An alternative would be deep diving into editing highcharts.
 To accomplish this Brock lending some skills in running a massive SQL querry to format the food desert data set to mirror the format structure highcharts needed.
-This mirrored food desert data was than brought into a jupyter notebook (*nat.map.ipynb*). The data was than merged with a working set taken from highcharts unemployment rates. The data was than cleaned, exported, and uploaded to the postgres database.
+This mirrored food desert data was than brought into a jupyter notebook (*nat.map.ipynb*). The data was than merged with a working set taken from highcharts unemployment rate json file. The data was than cleaned, exported, and uploaded to the postgres database.
 
 #### Final Product
 Below is a image of the final product *color scheme* edited.
-![Highcharts Map](/resources/images/<file>)
+![Highcharts Map](/resources/images/highchart.PNG)
 
 
 
