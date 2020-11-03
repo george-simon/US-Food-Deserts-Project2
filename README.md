@@ -50,9 +50,9 @@ After giving the visitor a brief overview of food deserts, we will guide them to
 ## Project Write-Up
 
 ### Title-as taken from the project tasks
+______________________________
 <!-- if you plan on multiple sections -->
 #### Sub-Title
-______________________________
 
 #### Requirements
 * None
