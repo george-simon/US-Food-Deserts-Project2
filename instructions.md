@@ -13,16 +13,16 @@
     * Open pgAdmin on local machine
         * Create database and name it "food_deserts"
 * In Repo, open resources/schema directory
-    * 1) Copy SQL query inside "data_food_deserts.sql"
-    * 2) Open query tool in food_deserts database
-    * 3) Paste code and run query
+    1) Copy SQL query inside "data_food_deserts.sql"
+    2) Open query tool in food_deserts database
+    3) Paste code and run query
     * Repeat steps 1-3 for the query in "data_vulnerability_mult.sql" file
 * After base tables have been created, right click on the "data_food_deserts" table and begin the Import data process
-    * 1) In Import Wizard, slide Import/Export switch to "Import"
-    * 2) Search for file: "YOUR REPO NAME/resources/data/data_food_deserts.csv"
-    * 3) Under "Miscellaneous" in Wizard, slide "Header"switch to "Yes"
-    * 4) Select "," as the Delimeter
-    * 5) Click "OK"
+    1) In Import Wizard, slide Import/Export switch to "Import"
+    2) Search for file: "YOUR REPO NAME/resources/data/data_food_deserts.csv"
+    3) Under "Miscellaneous" in Wizard, slide "Header"switch to "Yes"
+    4) Select "," as the Delimeter
+    5) Click "OK"
     * Repeat steps 1-5 of import process for "data_vulnerability_multi" table using the file "YOUR REPO NAME/resources/data/data_vulnerability_mult.csv"
 * Navigate in Repo to resources/schema
     * Open "queries.sql" file and copy all (click into file and on keyboard, click ctrl + A, ctrl + C)
