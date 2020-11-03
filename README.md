@@ -1,4 +1,5 @@
 # US-Food-Deserts
+## *TEAM: Paul Hardy, John Levear, Brock Vriesman, and George Simon*
 
 ## Project Summary
 This project seek to share knowledge to vistors through visualizations and data insights on food deserts. The hope is to answer the following series of questions:
@@ -17,10 +18,9 @@ After giving the visitor a brief overview of food deserts, we will guide them to
 ### DATA/PROJECT CONSTRAINTS
 * 2010 Census Data
 
-### PROJECT TASK BUILD OUT
+### PROJECT TASKS
 * Data Sourcing/Research - TEAM
   * Identify files
-  * Save to Master Branch
 * Data Cleaning (ETL) - JOHN, PAUL
   * Extract
   * Transform
