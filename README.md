@@ -25,22 +25,22 @@ After giving the visitor a brief overview of food deserts, we will guide them to
   * Extract
   * Transform
   * Load (PostGreSQL)
-* Preliminary Analysis - GEORGE, BROCK
-  * Demographic Data in Multnomah
-  * Summary Tables at Multnomah
-  * Build Confidence on what we are looking at
-* Website
-  * Python Flask API - BROCK
-    * Flask CORS Module
-    * Call data element
-  * HTML/CSS - GEORGE
-  * Database
-* Visualizations - GEORGE
-  * Multiple leaflet, plotly graphs
-  * D3.js visualization ?? 
+* Preliminary Analysis - TEAM
+  * US Data Insights - BROCK
+  * Demographic Data in Multnomah - PAUL
+  * Summary Tables at Multnomah - PAUL
+* Front-End Website - GEORGE
+  * HTML/CSS 
+* Back-End Website
+  * Python Flask API - BROCK, JOHN
+      * Flask CORS Module
+      * Call data element
+* Visualizations
+  * Leaflet Map - JOHN
+  * D3 State Chart - BROCK
+  * US HighChart - GEORGE
+  * Plotly Data Insights - PAUL
 * Final Analysis/Write Up - TEAM
 * Presentation - Team
-  * Use website as presentation
-  * Be prepared to show code in ppt
-* Github Merge Manager - PAUL
-  * Environment Set-Up - PAUL
+* Github Merge Manager - George
+  * Environment/.txt Set-Up - PAUL
