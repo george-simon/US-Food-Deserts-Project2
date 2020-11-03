@@ -32,6 +32,8 @@ multnomah = Base.classes.multnomah_data
 multsum = Base.classes.multnomah_summary_data
 # Adding table of summarized values for National Data
 natstat = Base.classes.nat_stat_table
+# Adding table of summarized values for Nat Map
+natmapjson = Base.classes.clean_nat_map_json
 
 # Step 4: Create routes including a root level and API call routes
 @app.route("/")
@@ -188,6 +190,27 @@ def natstatdata():
         nat_stat_results.append(item_dict)
 
     return jsonify(nat_stat_results)
+
+@app.route("/api/v1.0/natmapjsondata")
+def natmapdata():  
+    
+    session = Session(engine)
+
+    results = session.query(natmapjson.code, natmapjson.name, natmapjson.value).all()
+
+    session.close()
+
+    nat_map_results = []
+
+    for item in results:
+        item_dict = {}
+        item_dict["code"] = item[0]
+        item_dict["name"] = item[1]
+        item_dict["value"] = item[2]
+        nat_map_results.append(item_dict)
+
+    return jsonify(nat_map_results)
+
 
 # Boiler plate flask app code
 if __name__ == "__main__":
