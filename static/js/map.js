@@ -71,7 +71,7 @@ d3.json("/api/v1.0/natmapjsondata").then(data => {
       min: 0,
       max: 25,
       tickInterval: 5,
-      stops: [[0, '#F1EEF6'], [0.65, '#900037'], [1, '#500007']],
+      stops: [[0, '#80cdc1'], [0.65, '#dfc27d'], [1, '#543005']],
       labels: {
         format: '{value}%'
       }
