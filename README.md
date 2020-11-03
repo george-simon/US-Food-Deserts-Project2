@@ -103,4 +103,28 @@ The image below highlights the defination of a food desert. Again still drawing 
 ![Team Highlight](/resources/images/webpage-4.png)
 
 
+### Visualizations
+______________________________
+<!-- if you plan on multiple sections -->
+#### Highcharts - US County Map
+
+#### Requirements
+* Template taken from:
+ * [Highcharts US Counties](https://www.highcharts.com/demo/maps/us-counties)
+* Data inputted needs to be formatted correctly
+
+#### Description
+The highcharts code allows the user to plug in a responsive chart the has many built in capabilities.
+* Hover ability with popup insights
+* Outlines for state & counties as taken from highchart
+* Color key 
+* Zoom feature
+* Export an image, svg
+* Etc.
+
+-content-goes-here-
+<!-- Below is code for inputting a image. All images will be saved in resources/images folder -->
+![Images Link Example](/resources/images/<file>)
+
+
 
