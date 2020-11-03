@@ -364,13 +364,6 @@ ORDER BY value DESC)
 ;
 
 
-DROP TABLE IF EXISTS nat_map_json;
-CREATE TABLE nat_map_json (
-   code         VARCHAR(10)  PRIMARY KEY 
-  ,name                VARCHAR(60)
-  ,value               FLOAT IS NOT NULL
-);
-
 DROP TABLE IF EXISTS clean_nat_map_json;
 CREATE TABLE clean_nat_map_json AS (
 SELECT *
