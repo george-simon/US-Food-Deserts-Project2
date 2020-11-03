@@ -30,7 +30,8 @@ After giving the visitor a brief overview of food deserts, we will guide them to
   * Demographic Data in Multnomah - PAUL
   * Summary Tables at Multnomah - PAUL
 * Front-End Website - GEORGE
-  * HTML/CSS 
+  * HTML/CSS
+  * Bootstrap 
 * Back-End Website
   * Python Flask API - BROCK, JOHN
       * Flask CORS Module
@@ -40,7 +41,30 @@ After giving the visitor a brief overview of food deserts, we will guide them to
   * D3 State Chart - BROCK
   * US HighChart - GEORGE
   * Plotly Data Insights - PAUL
-* Final Analysis/Write Up - TEAM
-* Presentation - Team
 * Github Merge Manager - George
   * Environment/.txt Set-Up - PAUL
+* Presentation - Team
+* Final Analysis/Write Up - TEAM
+
+
+## Project Write-Up
+
+### <Title-as taken from the project tasks>
+<!-- if you plan on multiple sections -->
+#### <Sub-Title>
+__________________________________________
+
+#### Requirements
+* None
+* For example: config.py
+* Download blah blah
+
+#### Description
+<!-- Try to keep this highlevel and short -->
+blah blah
+
+-content-goes-here-
+<!-- Below is code for inputting a image. All images will be saved in resources/images folder -->
+![Images Link Example](/resources/images/<file>)
+
+
