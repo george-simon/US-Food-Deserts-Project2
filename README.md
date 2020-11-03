@@ -96,9 +96,9 @@ Again the goal was to draw in the vistor and that was to be with the question "W
 
 The image below highlights the defination of a food desert. Again still drawing in the user as they scroll more towards the interactive visualizations and graphs.
 * *See Visualization section for addtional info on the graphs utilized*
-![Defination](/resources/images/webpage-2.png)
+![Defination](/resources/images/webpage-2.PNG)
 * Additional data insights as analyzed by Brock
-![US Food Desert Facts](/resources/images/webpage-3.png)
+![US Food Desert Facts](/resources/images/webpage-3.PNG)
 * Team section complete with hover capability that pops up links to the teammates Github & Linkedin profile.
 ![Team Highlight](/resources/images/webpage-4.png)
 
