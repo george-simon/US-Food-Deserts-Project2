@@ -68,6 +68,7 @@ blah blah
 ![Images Link Example](/resources/images/<file>)
 
 
+
 ## Front-End Development
 ______________________________
 
@@ -101,6 +102,7 @@ The image below highlights the defination of a food desert. Again still drawing 
 ![US Food Desert Facts](/resources/images/webpage-3.PNG)
 * Team section complete with hover capability that pops up links to the teammates Github & Linkedin profile.
 ![Team Highlight](/resources/images/webpage-4.png)
+
 
 
 ## Visualizations
