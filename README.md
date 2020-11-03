@@ -72,8 +72,10 @@ blah blah
 ______________________________
 
 #### Requirements
-* Downloaded free bootstrap template from *startbootstrap*: [Stylish-portfolio Download](https://startbootstrap.com/themes/stylish-portfolio/)
-* Team Section Elements utilized from *bootstrapmade* [BizPage Demo Download](https://bootstrapmade.com/demo/BizPage/)
+* Downloaded free bootstrap template from *startbootstrap*
+  * [Stylish-portfolio Download](https://startbootstrap.com/themes/stylish-portfolio/)
+* Team section elements utilized from *bootstrapmade* 
+  * [BizPage Demo Download](https://bootstrapmade.com/demo/BizPage/)
 
 #### Description
 For the creation of the front-end webpage the focus was to keep the visitors gaze on the story + questions. To do this a responsive bootstrap webpage was chosen along with elements and design inspiration were taken from a variety of webpages. Below is a list of the goals:
@@ -83,9 +85,22 @@ For the creation of the front-end webpage the focus was to keep the visitors gaz
 * Gorgeous Design & Theme
 
 #### Inspiration
+The below image is a show case of some of the webpages that inspired the final design.
 ![Inspiration Canvas](/resources/images/web-inspiration.png)
 
-The above is a show case of some of the webpages that inspired the final design.
+#### Final Product
+The below image is show casing the simple landing page with the navigation 'burger' in the top right selected to see the different sections.
+Again the goal was to draw in the vistor and that was to be with the question "What is a Food Desert?" and a possible button to push to 'find out more' or scroll.
+* Note: The website is just a single webpage. the navigation options to the right allow the user to jump to each section
+![Landing Page](/resources/images/webpage-1.png)
+
+The image below highlights the defination of a food desert. Again still drawing in the user as they scroll more towards the interactive visualizations and graphs.
+* *See Visualization section for addtional info on the graphs utilized*
+![Defination](/resources/images/webpage-2.png)
+* Additional data insights as analyzed by Brock
+![US Food Desert Facts](/resources/images/webpage-3.png)
+* Team section complete with hover capability that pops up links to the teammates Github & Linkedin profile.
+![Team Highlight](/resources/images/webpage-4.png)
 
 
 
