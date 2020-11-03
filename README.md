@@ -49,26 +49,6 @@ After giving the visitor a brief overview of food deserts, we will guide them to
 
 # Project Write-Up
 
-## Title-as taken from the project tasks
-______________________________
-<!-- if you plan on multiple sections -->
-#### Sub-Title
-
-#### Requirements
-* None
-* For example: config.py
-* Download blah blah
-
-#### Description
-<!-- Try to keep this highlevel and short -->
-blah blah
-
--content-goes-here-
-<!-- Below is code for inputting a image. All images will be saved in resources/images folder -->
-![Images Link Example](/resources/images/<file>)
-
-
-
 ## Front-End Development
 ______________________________
 
