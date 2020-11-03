@@ -1,26 +1,28 @@
 // Create map object
 var myMap = L.map("map", {
-    center: [45.5245, -122.6550],
-    zoom: 11.5
+    center: [45.535, -122.655],
+    zoom: 11
   });
 
-// Add tile layer to the map
-var streetmap = L.tileLayer("https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}", {
+// Add street layer to the map
+var satelitemap = L.tileLayer("https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}", {
   attribution: "© <a href='https://www.mapbox.com/about/maps/'>Mapbox</a> © <a href='http://www.openstreetmap.org/copyright'>OpenStreetMap</a> <strong><a href='https://www.mapbox.com/map-feedback/' target='_blank'>Improve this map</a></strong>",
   tileSize: 512,
   maxZoom: 18,
   zoomOffset: -1,
-  id: "mapbox/streets-v11",
+  id: "mapbox/satellite-streets-v11",
   accessToken: API_KEY
 }).addTo(myMap);
 
-var lightmap = L.tileLayer("https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}", {
+// Add light layer to the map
+var streetmap = L.tileLayer("https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}", {
   attribution: "Map data &copy; <a href=\"https://www.openstreetmap.org/\">OpenStreetMap</a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA</a>, Imagery © <a href=\"https://www.mapbox.com/\">Mapbox</a>",
   maxZoom: 18,
-  id: "mapbox/light-v10",
+  id: "mapbox/streets-v11",
   accessToken: API_KEY
 });
 
+// Add dark layer to the map
 var darkmap = L.tileLayer("https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}", {
   attribution: "Map data &copy; <a href=\"https://www.openstreetmap.org/\">OpenStreetMap</a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA</a>, Imagery © <a href=\"https://www.mapbox.com/\">Mapbox</a>",
   maxZoom: 18,
@@ -30,45 +32,40 @@ var darkmap = L.tileLayer("https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{
 
 // Create a baseMaps object
 var baseMaps = {
+  "Satelite Map": satelitemap,
   "Street Map": streetmap,
-  "Light Map": lightmap,
   "Dark Map": darkmap
 };
 
-// Grab data with d3
+// File path to Multnomah census tract geoJson
 let mult_geoJson = "../static/js/outline_mult.geojson";
 
+// Grab postGres data with d3 and flask
 d3.json("/api/v1.0/multdata").then(multdata => {
 
-  console.log(multdata)
-
+  // Grab Multnomah geoJson with d3
   d3.json(mult_geoJson).then(mult_geoJson => {
     
     // Define features from mult_geoJson
-    let features = mult_geoJson.features
-    console.log(features)
-    
-    // Define fips from mult_geoJson
-    let fips = []
+    let features = mult_geoJson.features;
+
+    // Define population in 2010 from mult_geoJson
+    let population_2010 = []
 
     for (let i = 0; i < features.length; i++) {
-      let fip = features[i].properties.FIPS
-      fips.push(fip)
+      let pop_2010 = multdata[i].population_2010
+      population_2010.push(pop_2010)
     };
 
-    console.log(fips)
+    // Define median family income from mult_geoJson
+    let family_income = []
 
-    // Define census_tracts from multdata
-    let census_tracts = []
-
-    for (let i = 0; i < multdata.length; i++) {
-      let census_tract = multdata[i].census_tract.toString()
-      census_tracts.push(census_tract)
+    for (let i = 0; i < features.length; i++) {
+      let fam_income = multdata[i].med_fam_income
+      family_income.push(fam_income)
     };
 
-  // console.log(data)
-
-    // Define percent_la_half from multdata
+    // Define percent low acess to food at half mile from multdata
     let percent_la_half = [];
 
     for (let i = 0; i < multdata.length; i++) {
@@ -76,31 +73,38 @@ d3.json("/api/v1.0/multdata").then(multdata => {
         percent_la_half.push(perc_la_half)
     };
 
-    console.log(percent_la_half)
+    // Define percent low acess to food at one mile from multdata
+    let percent_la_1 = [];
 
-    // Define percent_renters from mult_geoJson
-    let percent_renters = []
+    for (let i = 0; i < multdata.length; i++) {
+        let perc_la_1 = multdata[i].percent_low_access_1
+        percent_la_1.push(perc_la_1)
+    };
+
+    // Define median family income from mult_geoJson
+    let percent_poverty = []
 
     for (let i = 0; i < features.length; i++) {
-      let perc_renters = features[i].properties.Perc_renters
-      percent_renters.push(perc_renters)
+      let perc_poverty = multdata[i].percent_poverty
+      percent_poverty.push(perc_poverty)
     };
 
     // Create function for color scale
     function getColor(d) {
-      return d >= 89 ? '#a50026' :
-             d >= 79 ? '#d73027' :
-             d >= 69 ? '#f46d43' :
-             d >= 59 ? '#fdae61' :
-             d >= 49 ? '#fee08b' :
-             d >= 39 ? '#d9ef8b' :
-             d >= 29 ? '#a6d96a' :
-             d >= 19 ? '#66bd63' :
-             d >=  9 ? '#1a9850' :
-             d >= -1 ? '#006837' :
+      return d >= 90 ? '#543005' :
+             d >= 80 ? '#8c510a' :
+             d >= 70 ? '#bf812d' :
+             d >= 60 ? '#dfc27d' :
+             d >= 50 ? '#f6e8c3' :
+             d >= 40 ? '#c7eae5' :
+             d >= 30 ? '#80cdc1' :
+             d >= 20 ? '#35978f' :
+             d >= 10 ? '#01665e' :
+             d >=  0 ? '#003c30' :
                        '#1a1a1a' ;
     };
 
+    // Create function for style of geoJson features
     function style(feature) {
       return {
           fillColor: getColor(percent_la_half[feature.properties.OBJECTID - 1]),
@@ -109,37 +113,49 @@ d3.json("/api/v1.0/multdata").then(multdata => {
           opacity: 1,
           color: 'white'          
       };
-    }
+    };
   
+    // Create geoJson layer for map
     L.geoJson(mult_geoJson, {
 
+      // Call the style function from above
       style: style,
 
       // Called on each feature
       onEachFeature: function(feature, layer) {
+
         // Set mouse events to change map styling
         layer.on({
-          // When a user's mouse touches a map feature, the mouseover event calls this function, that feature's opacity changes
+
+          // When a user's mouse touches a map feature, that feature's opacity changes
           mouseover: function(event) {
             layer = event.target;
             layer.setStyle({
               fillOpacity: 0.6
             });
           },
-          // When the cursor no longer hovers over a map feature - when the mouseout event occurs - the feature's opacity reverts back
+
+          // When the cursor no longer hovers over a map feature, the feature's opacity reverts back
           mouseout: function(event) {
             layer = event.target;
             layer.setStyle({
-              fillOpacity: 0.3
+              fillOpacity: 0.5
             });
           },
-          // When a feature (neighborhood) is clicked, it is enlarged to fit the screen
+
+          // When a feature (census tract) is clicked, it is enlarged to fit the screen
           click: function(event) {
             myMap.fitBounds(event.target.getBounds());
           }
         });
+
         // Giving each feature a pop-up with information pertinent to it
-        layer.bindPopup("<p>Renters: " + Math.round(feature.properties.Perc_renters) + "%</p> <hr> <h2>" + percent_la_half[feature.properties.OBJECTID - 1] + "</h2>");
+        layer.bindPopup("<h5>2010 Census Data</h5>" +
+                        "<p>Population: " + population_2010[feature.properties.OBJECTID - 1] + 
+                        "</p><p>Median Family Income: " + family_income[feature.properties.OBJECTID - 1] + 
+                        "</p><p>Pop. > Half Mile from Supermarket: " + percent_la_half[feature.properties.OBJECTID - 1] + 
+                        "%</p><p>Pop. > One Mile from Supermarket: " + percent_la_1[feature.properties.OBJECTID - 1] +
+                        "%</p><p>Poverty Rate: " + percent_poverty[feature.properties.OBJECTID - 1] + "%</p>");
 
       }
 
@@ -153,13 +169,12 @@ d3.json("/api/v1.0/multdata").then(multdata => {
     legend.onAdd = function (myMap) {
 
       var div = L.DomUtil.create('div', 'info legend'),
-        grades = [-1, 9, 19, 29, 39, 49, 59, 69, 79, 89];
+        grades = [0, 10, 20, 30, 40, 50, 60, 70, 80, 90];
 
       for (var i = 0; i < grades.length; i++) {
-        console.log(getColor(grades[i]))
         div.innerHTML +=
-          // '<i style="background:' + getColor(grades[i] + 1) + '"></i> ' +
-          (grades[i] + 1) + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : '+');
+          '<i style="background:' + getColor(grades[i] + 1) + '"></i> ' +
+          (grades[i]) + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '%<br>' : '-100%');
       }
 
       return div
