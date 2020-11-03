@@ -1,40 +1,72 @@
-# US-Food-Deserts-Project2
+# US-Food-Deserts
+## *TEAM: Paul Hardy, John Levear, Brock Vriesman, and George Simon*
 
-## Disheveled Mummies Project #2 Proposal
-Our project will focus on food deserts. Answering a series of questions, initially, to inform visitors:
+## Project Summary
+This project seek to share knowledge to vistors through visualizations and data insights on food deserts. The hope is to answer the following series of questions:
 * What are food deserts?
 * Where are food deserts located in the US?
 * Who lives in food deserts?
  
-After giving the visitor a brief overview of food deserts, we will guide them to explore the topic of food deserts in an urban setting. Our goal in this project will be to illustrate to the visitor that food deserts are not limited to rural areas and may be closer to home in an urban environment than they previously thought. At this point, the questions we want to be able to communicate to the visitor the answers to the following questions:
-* What does a food desert look like in an urban setting?
-* Are there income differences between food desert and non-food desert areas?
-* Are there health outcome differences?
+After giving the visitor a brief overview of food deserts, we will guide them to explore the topic of food deserts in an urban setting close to home in Oregon. One of our goals is to illustrate to the visitor that food deserts are not limited to rural areas and may be closer to home in an urban environment (specifically Multnomah County in Oregon) than they previously thought. At this point, the questions we want to be able to communicate to the visitor the answers to the following questions and display visualizations of possible highlights of *risk factors* in Multnomah County.
+* What does a food desert look like in Multnomah County (Oregon)?
+* Are there any data insights of interest that exist in Multnomah County?
 
-### PROJECT TASK BUILD OUT
+### DATASETS
+* [Food Desert Data](https://www.kaggle.com/tcrammond/food-access-and-food-deserts)
+* [Vulnerability Risk Data - Portland, OR](https://gis-pdx.opendata.arcgis.com/datasets/vulnerability?geometry=-123.978%2C45.376%2C-121.365%2C45.713)
+
+### DATA/PROJECT CONSTRAINTS
+* 2010 Census Data
+
+### PROJECT TASKS
 * Data Sourcing/Research - TEAM
   * Identify files
-  * Save to Master Branch
 * Data Cleaning (ETL) - JOHN, PAUL
   * Extract
   * Transform
   * Load (PostGreSQL)
-* Preliminary Analysis - GEORGE, BROCK
-  * Demographic Data in Multnomah
-  * Summary Tables at Multnomah
-  * Build Confidence on what we are looking at
-* Website
-  * Python Flask API - BROCK
-    * Flask CORS Module
-    * Call data element
-  * HTML/CSS - GEORGE
-  * Database
-* Visualizations - GEORGE
-  * Multiple leaflet, plotly graphs
-  * D3.js visualization ?? 
-* Final Analysis/Write Up - TEAM
+* Preliminary Analysis - TEAM
+  * US Data Insights - BROCK
+  * Demographic Data in Multnomah - PAUL
+  * Summary Tables at Multnomah - PAUL
+* Front-End Website - GEORGE
+  * HTML/CSS
+  * Bootstrap 
+* Back-End Website
+  * Python Flask API - BROCK, JOHN
+      * Flask CORS Module
+      * Call data element
+* Visualizations
+  * Leaflet Map - JOHN
+  * D3 State Chart - BROCK
+  * US HighChart - GEORGE
+  * Plotly Data Insights - PAUL
+* Github Merge Manager - George
+  * Environment/.txt Set-Up - PAUL
 * Presentation - Team
-  * Use website as presentation
-  * Be prepared to show code in ppt
-* Github Merge Manager - PAUL
-  * Environment Set-Up - PAUL
+* Final Analysis/Write Up - TEAM
+
+
+## Project Write-Up
+
+### Title-as taken from the project tasks
+______________________________
+<!-- if you plan on multiple sections -->
+#### Sub-Title
+
+#### Requirements
+* None
+* For example: config.py
+* Download blah blah
+
+#### Description
+<!-- Try to keep this highlevel and short -->
+blah blah
+
+-content-goes-here-
+<!-- Below is code for inputting a image. All images will be saved in resources/images folder -->
+![Images Link Example](/resources/images/<file>)
+
+
+
+
