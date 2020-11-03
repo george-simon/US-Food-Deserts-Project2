@@ -122,7 +122,12 @@ The highcharts code allows the user to plug in a responsive chart the has many b
 * Export an image, svg
 * Etc.
 
--content-goes-here-
+#### Implementation
+Now although this comes with a lot of features there were a lot of issues to have the map show up and figure out how to utilize it.
+The scripts taken for the index.html and their placement on the page are *KEY*. Another constraint the user should pay attention to us how to plug in your own data to the map. The map is set up in a way that it needs to be fed a format of json. Below is an explantion overview of how this was completed in our project.
+
+#### Feeding Highcharts Data
+
 <!-- Below is code for inputting a image. All images will be saved in resources/images folder -->
 ![Images Link Example](/resources/images/<file>)
 
