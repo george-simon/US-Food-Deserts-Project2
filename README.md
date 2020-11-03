@@ -52,7 +52,7 @@ After giving the visitor a brief overview of food deserts, we will guide them to
 ### Title-as taken from the project tasks
 <!-- if you plan on multiple sections -->
 #### Sub-Title
-__________________________________________
+______________________________
 
 #### Requirements
 * None
