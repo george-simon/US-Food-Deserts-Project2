@@ -67,7 +67,11 @@ ALTER TABLE multnomah_summary_data
 ADD PRIMARY KEY (county);
 
 -- State Food Desert Stats (For Data Table) --
+<<<<<<< HEAD
+DROP TABLE nat_stat_table;
+=======
 DROP TABLE IF EXISTS nat_stat_table;
+>>>>>>> main
 CREATE TABLE nat_stat_table AS
 (SELECT state AS State
  	  ,stateCode
