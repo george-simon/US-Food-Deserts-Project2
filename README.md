@@ -68,5 +68,24 @@ blah blah
 ![Images Link Example](/resources/images/<file>)
 
 
+### Front-End Development
+______________________________
+
+#### Requirements
+* Downloaded free bootstrap template from *startbootstrap*: [Stylish-portfolio Download](https://startbootstrap.com/themes/stylish-portfolio/)
+* Team Section Elements utilized from *bootstrapmade* [BizPage Demo Download](https://bootstrapmade.com/demo/BizPage/)
+
+#### Description
+For the creation of the front-end webpage the focus was to keep the visitors gaze on the story + questions. To do this a responsive bootstrap webpage was chosen along with elements and design inspiration were taken from a variety of webpages. Below is a list of the goals:
+* Simplicity
+* Professional
+* Focus Kept on the Visualizations + Data Insights
+* Gorgeous Design & Theme
+
+#### Inspiration
+
+<!-- Below is code for inputting a image. All images will be saved in resources/images folder -->
+![Images Link Example](/resources/images/<file>)
+
 
 
