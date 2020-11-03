@@ -110,8 +110,10 @@ ______________________________
 
 #### Requirements
 * Template taken from:
- * [Highcharts US Counties](https://www.highcharts.com/demo/maps/us-counties)
+  * [Highcharts US Counties](https://www.highcharts.com/demo/maps/us-counties)
 * Data inputted needs to be formatted correctly
+  * Jupyter Notebook
+  * Postgres Query Tool
 
 #### Description
 The highcharts code allows the user to plug in a responsive chart the has many built in capabilities.
@@ -126,10 +128,24 @@ The highcharts code allows the user to plug in a responsive chart the has many b
 Now although this comes with a lot of features there were a lot of issues to have the map show up and figure out how to utilize it.
 The scripts taken for the index.html and their placement on the page are *KEY*. Another constraint the user should pay attention to us how to plug in your own data to the map. The map is set up in a way that it needs to be fed a format of json. Below is an explantion overview of how this was completed in our project.
 
-#### Feeding Highcharts Data
+#### Highcharts Data Formatting
+After some intensive road blocks and hours spent analyzing how the highcharts county map ingested data the following highcharts forum [Highcharts US Counties](https://www.highcharts.com/forum/viewtopic.php?t=34910).
 
-<!-- Below is code for inputting a image. All images will be saved in resources/images folder -->
-![Images Link Example](/resources/images/<file>)
+This forum outlines that the high chart US County Map needs to take data in a specific json array. With the data the only edit item I wanted to change was the value column. Editing from unemployment percent to food desert percent. See code block:
+```
+{
+        "code": "us-id-067",
+        "name": "Minidoka County, ID",
+        "value": XXXX  <=============================== Copy your data
+    }, 
+```
+* Note: An alternative would be deep diving into editing highcharts.
+To accomplish this Brock lending some skills in running a massive SQL querry to format the food desert data set to mirror the format structure highcharts needed.
+This mirrored food desert data was than brought into a jupyter notebook (*nat.map.ipynb*). The data was than merged with a working set taken from highcharts unemployment rates. The data was than cleaned, exported, and uploaded to the postgres database.
+
+#### Final Product
+Below is a image of the final product *color scheme* edited.
+![Highcharts Map](/resources/images/<file>)
 
 
 
