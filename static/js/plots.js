@@ -55,7 +55,7 @@ function buildplot() {
     // Define the plot layout
   var layout = {
     title: "Summary statistics of population <br> impacted by reduced access to healthy food <br> in Multnomah county.",
-    // xaxis: { title: "Population Statistics" },
+    xaxis: { tickangle: 45 },
     yaxis: { title: "Population in 1000s" },
       autosize: false,
       width: 600,
@@ -67,6 +67,7 @@ function buildplot() {
         t: 100,
         pad: 4
       },
+
   };
 // Start of plot 2
     statistic2_name = [ 
@@ -111,7 +112,7 @@ function buildplot() {
     // Define the plot layout
     var layout2 = {
     title: "Groups vulnerable to changing economic <br> conditions for Multnomah County",
-    // xaxis: { title: "Risk Factors and Risk Scores" },
+    xaxis: { tickangle: 45  },
     yaxis: { title: "Percent" },
     autosize: false,
       width: 600,
@@ -125,8 +126,10 @@ function buildplot() {
       },
     };
 
-  Plotly.newPlot("plot1", data, layout);
-  Plotly.newPlot("plot2", data2, layout2);
+    var config = {responsive: true}
+
+  Plotly.newPlot("plot1", data, layout, config);
+  Plotly.newPlot("plot2", data2, layout2, config);
 });
 }
 
