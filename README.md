@@ -171,5 +171,49 @@ Below is an image of the Leaflet map. It uses the Mapbox satelite street layer, 
 
 ![Leaflet Map](/resources/images/leaflet.png)
 
+### Plotly Plots - Multnomah County Population and Risk Demographics (2 plots)
 
+### Requirements
+* Postgres database with data imported from CSVs
+* SQL queries used to summarize data from base tables and store in a summary table for quick access.
+* Flask app route dedicated to the Postres database for summary data.
+* Data accessed by plots.js to generate both charts. 
+
+### Description
+
+#### Plot on Left - "Summary statistics of population impacted by reduced access to healthy food in Multnomah county":
+The data in this plot is based on:
+* Data from the Economic Research Service (ERS) 
+* The U.S Department of Agriculture (USDA).   
+* Census Data from 2010 with updates occurring as recently as May 2020.
+
+#### Findings
+* First Bar: Represents the total population represented in the census.
+* Second Bar: Represents the population count that is beyond 1 mile from a supermarket.
+* Third Bar: Represents the population count that is beyond ½ a mile from a supermarket.
+* Fourth Bar: Red: Represents the number of homes with no vehicles.
+* Fifth Bar: Red: Represents number of homes with no vehicle.
+
+So, the second and third bars reveal that in Multnomah county, close to half the population is beyond a half mile from a supermarket, but  less than 10% of the population is beyond 1 mile from a supermarket. So, overall there is a high level of avvess to spermarkets for the majority of the population, which is what we would expect for a urban county.
+
+#### Plot on Right - "Groups vulnerable to changing economic conditions for Multnomah county"
+
+The data in this plot is based on:
+* Data from the Bureau of Planning and Sustainability
+* Published in 2014
+
+#### Findings
+
+The data used for this plot is is referred to as “Vulnerability Risk Analysis” and is a tool that identifies census tracts that are vulnerable to changing economic conditions.  These are tracts that have higher than citywide average populations with risk factors for vulnerability to economic changing conditions.  These risk factors include:
+* Renters rather than homeowners
+* Communities of color.
+* Populations that lack a college degree.
+* Populations with lower incomes.
+
+In summary, based on the data, the percentages of populations in census tracts that have higher than citywide average populations with risk factors for vulnerability to economic changing conditions is quite high in Multnomah county with some census tracts at the maximum risk levels.  Overall mean risk levels are at 2 out of 4 for each risk category, as this plot summarizes all census tracts.  The overall mean risk score at 8 out of 12 is 66% of the way to the maximum risk level (12).
+
+#### Final Product
+Below in an image of both plots that appear in the section titled "More Visualizations Multnomah County".  
+
+![Plotly plots](/resources/images/barplots.PNG)
 
