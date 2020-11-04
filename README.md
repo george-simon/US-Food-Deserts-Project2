@@ -171,7 +171,7 @@ Below is an image of the Leaflet map. It uses the Mapbox satelite street layer, 
 
 ![Leaflet Map](/resources/images/leaflet.png)
 
-### Plotly Plots - Mult County Population and Risk Demographics (2 plots)
+### Plotly Plots - Multnomah County Population and Risk Demographics (2 plots)
 
 ### Requirements
 * Postgres database with data imported from CSVs
@@ -215,5 +215,5 @@ In summary, based on the data, the percentages of populations in census tracts t
 #### Final Product
 Below in an image of both plots that appear in the section titled "More Visualizations Multnomah County".  
 
-![Plotly plots](/resources/images/barplots.png)
+![Plotly plots](/resources/images/barplots.PNG)
 
