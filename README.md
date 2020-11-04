@@ -88,7 +88,7 @@ The image below highlights the defination of a food desert. Again still drawing 
 ## Visualizations
 ______________________________
 <!-- if you plan on multiple sections -->
-#### Highcharts - US County Map
+### Highcharts - US County Map
 
 #### Requirements
 * Template taken from:
@@ -132,7 +132,7 @@ Below is a image of the final product *color scheme* edited.
 ![Highcharts Map](/resources/images/highchart.PNG)
 
 
-#### National Facts and State Scatterplot
+### National Facts and State Scatterplot
 
 #### Description
 * For national facts, a Postgres database was used to query and analyize data from data_food_deserts.csv file containing 2010 US Census Data
@@ -148,5 +148,28 @@ At the national level, in 2010, nearly 40M people in the US were considered to b
 #### Final Thoughts
 * There was a substaintial amount of effort expended to get the flask app up and running. It took almost a week and a half to make progress enough to get data flowing from the SQL tables we had built in Postgres into our Javascript staging area. By the time we were able to console.log the data into the HTML, there was a realization that the tables we had originally set up to feed charts were not exactly providing the correct data. Each person in the group ended up having to create additional SQL tables (as evidenced by the long list of instructions to set up our final Postgres environment), that the final analysis and visualization, for the "National Facts and State Scatterplot" section were not exactly what I would have wanted to display.
 * It felt like we were having some success with Git, but by our final series of pull requests, some of the HTML code had been overwritten and the final product was not exatly what we had intended it to be.
+
+
+### Leaflet Map - Mult Co. Census Tracts Map
+
+#### Requirements
+* Postgres database with data imported from CSVs
+* SQL query creating new table with pertinant information
+* Flask app connecting to the Postres database
+* GeoJSON file for Multnomah County census tract polygons
+* Leaflet and Mapbox configuration for visualization
+
+#### Description
+This Leaflet map shows the prevalence of food deserts within Multnomah County, Oregon based on the percentage of the census tract population that is more than half of a mile away from a supermarket. 
+
+#### Findings
+Food deserts appeared to be further from the city center, but there were some census tracts with a higher percentage than the census tracts around it. Further analysis is required to understand what factors correlate with food deserts. 
+One unexpected finding was that for some of the census tracts with a large percent of the population in a food desert, the median family income was significantly higher than other census tracts with a small percent of the population in a food desert. 
+
+#### Final Product
+Below is an image of the Leaflet map. It uses the Mapbox satelite street layer, which allows the user to zoom in far enough to see individual homes. Clicking on a census tract shows a popup with information about that census tract. 
+
+![Leaflet Map](/resources/images/leaflet.png)
+
 
 
