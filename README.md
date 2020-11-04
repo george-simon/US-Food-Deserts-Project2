@@ -143,7 +143,7 @@ Below is a image of the final product *color scheme* edited.
 #### Findings
 At the national level, in 2010, nearly 40M people in the US were considered to be living in a food desert. That is about 13% of the 2010 US population. White constituents were 10% less likely than average to be living in a food desert, Black constituents were 10% more likely, Hispanic constituents were 4% more likely and Asian constituents were 3% less likely to be living in a food desert. At the state level, as displayed in the scatterplot chart, there was an inverse relationship between the % of constiuents living in food desert census tracts and the state's median income.
 
-![State Scatterplot](/resources/images/statescatterplot.PNG)
+![State Scatterplot](/resources/images/statescatterplot.png)
 
 #### Final Thoughts
 * There was a substaintial amount of effort expended to get the flask app up and running. It took almost a week and a half to make progress enough to get data flowing from the SQL tables we had built in Postgres into our Javascript staging area. By the time we were able to console.log the data into the HTML, there was a realization that the tables we had originally set up to feed charts were not exactly providing the correct data. Each person in the group ended up having to create additional SQL tables (as evidenced by the long list of instructions to set up our final Postgres environment), that the final analysis and visualization, for the "National Facts and State Scatterplot" section were not exactly what I would have wanted to display.
