@@ -65,7 +65,8 @@ One unexpected finding was that for some of the census tracts with a large perce
 
 #### Final Product
 Below is an image of the Leaflet map. It uses the Mapbox satelite street layer, which allows the user to zoom in far enough to see individual homes. Clicking on a census tract shows a popup with information about that census tract. 
-![Leaflet Map](/resources/images/leaflet.PNG)
+
+![Leaflet Map](/resources/images/leaflet.png)
 
 
 
