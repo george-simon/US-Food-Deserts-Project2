@@ -1,4 +1,4 @@
-# Instructions for Getting Dishevled Mummies Project Online
+# Instructions for Data Base Set-Up
 
 ## Clone Repo and Set Up Data
 * Clone Repo

@@ -49,6 +49,28 @@ After giving the visitor a brief overview of food deserts, we will guide them to
 
 # Project Write-Up
 
+## Back-End Development
+______________________________
+
+#### Requirements
+* PostgreSQL Database - PgAdmin4
+  * [Download PgAdmin4](https://www.pgadmin.org/download/)
+* Set-up working environment
+
+#### Instructions for Database Set-Up
+  * [Link to instructions.md](instructions.md)
+
+#### Environment Set-Up Utilizing GitBash
+Assuming you have already cloned the project repo, and are in repo folder (main) in gitbash. Run the following commands.
+```
+git pull origin main
+conda create --name project2 python=3.6
+conda activate project2
+pip install -r requirements.txt
+pip freeze  (to verify that what you have installed matches what's listed in requirements.txt)
+```
+Once the above is complete, just be sure you "conda activate project2" when working on this project.
+
 ## Front-End Development
 ______________________________
 
@@ -173,13 +195,13 @@ Below is an image of the Leaflet map. It uses the Mapbox satelite street layer, 
 
 ### Plotly Plots - Multnomah County Population and Risk Demographics (2 plots)
 
-### Requirements
+#### Requirements
 * Postgres database with data imported from CSVs
 * SQL queries used to summarize data from base tables and store in a summary table for quick access.
 * Flask app route dedicated to the Postres database for summary data.
 * Data accessed by plots.js to generate both charts. 
 
-### Description
+#### Description
 
 #### Plot on Left - "Summary statistics of population impacted by reduced access to healthy food in Multnomah county":
 The data in this plot is based on:
